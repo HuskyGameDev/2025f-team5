@@ -3,7 +3,6 @@ extends Node2D
 # onready variables run when the scene enters the scene tree
 @onready var first_scene = load("res://Game/test_scene_1.tscn") # Grabs the scene as a packed scene
 @onready var instance = first_scene.instantiate() # Unpacks the scene into a collection of nodes
-@onready var bullet_scene = load("res://Game/base_bullet.tscn")
 
 # _ready() runs when the scene enters the scene tree
 func _ready():
@@ -24,4 +23,7 @@ func _process(delta):
 
 
 func _on_timer_timeout() -> void:
-	add_child(bullet_scene.instantiate())
+	var bullet = Bullet.new_bullet(200, get_global_mouse_position(), 3.0, 10.0)
+	add_child(bullet)
+	bullet.fire()
+	

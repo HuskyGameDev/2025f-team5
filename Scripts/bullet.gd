@@ -8,7 +8,7 @@ var damage : float			# damage
 var direction : Vector2		# bullet direction
 
 func _ready() -> void:
-	pass
+	set_process(false)
 
 
 func _process(delta: float) -> void:
@@ -18,11 +18,10 @@ func _process(delta: float) -> void:
 @warning_ignore("shadowed_variable")
 static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float) -> Bullet:
 	var bullet_instance = bullet_scene.instantiate()
-	bullet_instance.set_process(false)
 	bullet_instance.speed = speed
 	bullet_instance.lifetime = lifetime
 	bullet_instance.damage = damage
-	bullet_instance.direciton = direction
+	bullet_instance.direction = direction
 	return bullet_instance
 
 func fire() -> void:
