@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvci6mdchm5bw"]
+
+[ext_resource type="Script" uid="uid://8lajf1fe6gt8" path="res://Game/player.gd" id="1_h4tjw"]
+[ext_resource type="Texture2D" uid="uid://dcaj1e7muh7r1" path="res://Art/PlayerPlaceholder.png" id="1_kwoj6"]
+[ext_resource type="Texture2D" uid="uid://ci5cw2ix3jrox" path="res://Art/PlayerPlaceholderDead.png" id="2_h4tjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4tjw"]
+size = Vector2(24, 48)
+
+[node name="Player" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_h4tjw")
+
+[node name="AliveSprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_kwoj6")
+
+[node name="DeadSprite" type="Sprite2D" parent="Player"]
+visible = false
+texture = ExtResource("2_h4tjw")
+
+[node name="Area2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_h4tjw")
