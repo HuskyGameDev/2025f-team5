@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgmn57pfu3n8b"]
+
+[ext_resource type="Script" uid="uid://bli4u25j6g8fr" path="res://Game/enemy_base.gd" id="1_8nqel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edvsq"]
+size = Vector2(80, 80)
+
+[node name="EnemyBase" type="Area2D"]
+script = ExtResource("1_8nqel")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_edvsq")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+
+[node name="Cooldown" type="Timer" parent="."]
