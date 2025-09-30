@@ -7,6 +7,7 @@ var lifetime : float		# lifetime of the bullet in seconds
 var damage : float			# damage
 var direction : Vector2		# bullet direction
 
+
 func _ready() -> void:
 	pass
 
