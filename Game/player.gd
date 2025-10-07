@@ -1,28 +1,18 @@
 extends CharacterBody2D
 
-@export var health = 5;
-@export var speed = 200;
-var can_move = true;
-var can_dash = true;
+@export var health = 5
+@export var speed = 200
+var can_move = true
+var can_dash = true
 
 # Handles moving the character around
 func _physics_process(delta: float) -> void:	
 	if can_move:
 		# get the input direction and handle the movement/deceleration.
 		# moving left or right
-		var direction_x := Input.get_axis("Left", "Right")
-		if direction_x:
-			velocity.x = direction_x * speed
-		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
-
-		# moving up or down
-		var direction_y := Input.get_axis("Up", "Down")
-		if direction_y:
-			velocity.y = direction_y * speed
-		else:
-			velocity.y = move_toward(velocity.y, 0, speed)
-			
+		var input_direction := Input.get_vector("Left", "Right", "Up", "Down")
+		velocity = input_direction * speed
+		
 		# dashing
 		if Input.is_action_pressed("Dash") && can_dash:
 			can_move = false;
