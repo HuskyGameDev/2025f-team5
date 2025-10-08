@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name EnemyBase extends CharacterBody2D
 	#Used to load enemy instances
 const enemy_scene: PackedScene = preload("res://Game/enemy_base.tscn")
 

@@ -32,6 +32,9 @@ func fire() -> void:
 
 
 func _on_body_entered(body) -> void:
+	if body is EnemyBase:
+		body.hit(damage)
+	
 	queue_free()
 
 

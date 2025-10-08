@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://6iqnes5siuqi"]
+[gd_scene load_steps=6 format=4 uid="uid://6iqnes5siuqi"]
 
 [ext_resource type="PackedScene" uid="uid://bvci6mdchm5bw" path="res://Game/player.tscn" id="2_ibluu"]
 [ext_resource type="Texture2D" uid="uid://biyrkg4gtuk46" path="res://Art/WallTileSet.png" id="2_lva1o"]
+[ext_resource type="PackedScene" uid="uid://dgmn57pfu3n8b" path="res://Game/enemy_base.tscn" id="3_lva1o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgkw7"]
 texture = ExtResource("2_lva1o")
@@ -368,3 +369,6 @@ tile_map_data = PackedByteArray("AAAAAPr/AQACAAAAAAACAPr/AQACAAAAAAADAPr/AQACAAA
 tile_set = SubResource("TileSet_muvul")
 
 [node name="Player" parent="." instance=ExtResource("2_ibluu")]
+
+[node name="EnemyBase" parent="." instance=ExtResource("3_lva1o")]
+position = Vector2(186, -33)
