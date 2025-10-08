@@ -7,17 +7,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4tjw"]
 size = Vector2(24, 48)
 
-[node name="Player" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_h4tjw")
 
-[node name="AliveSprite" type="Sprite2D" parent="Player"]
+[node name="AliveSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_kwoj6")
 
-[node name="DeadSprite" type="Sprite2D" parent="Player"]
+[node name="DeadSprite" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("2_h4tjw")
 
-[node name="Area2D" type="CollisionShape2D" parent="Player"]
+[node name="Area2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h4tjw")
+
+[node name="Player" type="Node2D" parent="."]
