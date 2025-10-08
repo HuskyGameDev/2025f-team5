@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgmn57pfu3n8b"]
+[gd_scene load_steps=4 format=3 uid="uid://dgmn57pfu3n8b"]
 
 [ext_resource type="Script" uid="uid://bli4u25j6g8fr" path="res://Game/enemy_base.gd" id="1_8nqel"]
+[ext_resource type="Texture2D" uid="uid://bljmpp1gvnwvk" path="res://Game/target.png" id="2_rg37i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_edvsq"]
-size = Vector2(80, 80)
+[sub_resource type="CircleShape2D" id="CircleShape2D_oq5s3"]
+radius = 40.0
 
-[node name="EnemyBase" type="Area2D"]
+[node name="EnemyBase" type="CharacterBody2D"]
 script = ExtResource("1_8nqel")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_edvsq")
+shape = SubResource("CircleShape2D_oq5s3")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
+position = Vector2(-5.9604645e-07, 5.9604645e-07)
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("2_rg37i")
 
 [node name="Cooldown" type="Timer" parent="."]
+autostart = true

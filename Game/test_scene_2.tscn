@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bxhcc1gaivk8x"]
+[gd_scene load_steps=3 format=3 uid="uid://bxhcc1gaivk8x"]
+
+[ext_resource type="PackedScene" uid="uid://dgmn57pfu3n8b" path="res://Game/enemy_base.tscn" id="1_csl44"]
+[ext_resource type="PackedScene" uid="uid://bvci6mdchm5bw" path="res://Game/player.tscn" id="2_i8i3j"]
 
 [node name="TestScene2" type="Node2D"]
 
@@ -8,3 +11,9 @@ offset_top = 274.0
 offset_right = 573.0
 offset_bottom = 297.0
 text = "Scene 2"
+
+[node name="EnemyBase" parent="." instance=ExtResource("1_csl44")]
+position = Vector2(72, 80)
+
+[node name="Player" parent="." instance=ExtResource("2_i8i3j")]
+position = Vector2(456, 184)
