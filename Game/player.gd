@@ -1,9 +1,15 @@
 extends CharacterBody2D
 
-@export var health = 5
-@export var speed = 200
+@export var health : int = 5
+@export var speed : int = 200
+@export var shootspeed : int = 200
+@export var shoot_range : float = 2.0
+@export var damage : int = 10
+@export var firerate : float = 0.5
+
 var can_move = true
 var can_dash = true
+var can_shoot = true
 
 # Handles moving the character around
 func _physics_process(delta: float) -> void:	
@@ -25,6 +31,15 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("PrimaryAction") && can_shoot:
+		var shot = Bullet.new_bullet(shootspeed, get_global_mouse_position(), shoot_range, damage)
+		add_child(shot)
+		shot.fire()
+		can_shoot = false
+		get_tree().create_timer(firerate).timeout.connect(shot_reset)
+
+
 # Called when a dash ends, allows the player to control movement again
 func end_dash():
 	can_move = true;
@@ -42,3 +57,6 @@ func take_damage():
 		can_move = false;
 		$AliveSprite.visible = not $AliveSprite.visible
 		$DeadSprite.visible = not $DeadSprite.visible
+
+func shot_reset():
+	can_shoot = true
