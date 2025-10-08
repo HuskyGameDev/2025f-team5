@@ -22,7 +22,7 @@ static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: 
 	bullet_instance.speed = speed
 	bullet_instance.lifetime = lifetime
 	bullet_instance.damage = damage
-	bullet_instance.direciton = direction
+	bullet_instance.direction = direction
 	return bullet_instance
 
 func fire() -> void:
