@@ -9,7 +9,7 @@ var texture
 
 	# Insantiates and fires a bullet at the player whenever its attack cooldown expires
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = $bullet.new_bullet(1, $player.position - self.position, 5, 1)
+	var bullet_instance = Bullet.new_bullet(1, Vector2.LEFT, 5, 1)
 	bullet_instance.fire()
 	
 
