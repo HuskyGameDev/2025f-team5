@@ -39,6 +39,6 @@ func _on_body_entered(body) -> void:
 
 
 func despawn() -> void:
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
-	
+	# await get_tree().create_timer(lifetime).timeout
+	# queue_free()
+	pass
