@@ -29,7 +29,11 @@ func fire() -> void:
 	look_at(direction)
 	set_process(true)
 	despawn()
-	
+
+
+func _on_body_entered(body) -> void:
+	queue_free()
+
 
 func despawn() -> void:
 	await get_tree().create_timer(lifetime).timeout
