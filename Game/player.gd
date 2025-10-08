@@ -32,9 +32,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("PrimaryAction") && can_shoot:
+	if Input.is_action_pressed("PrimaryAction") && can_shoot:
 		var shot = Bullet.new_bullet(shootspeed, get_global_mouse_position(), shoot_range, damage)
-		add_child(shot)
+		get_parent().add_child(shot)
+		shot.position = self.position
 		shot.fire()
 		can_shoot = false
 		get_tree().create_timer(firerate).timeout.connect(shot_reset)
