@@ -34,8 +34,13 @@ func fire() -> void:
 func _on_body_entered(body) -> void:
 	if body is EnemyBase:
 		body.hit(damage)
+		queue_free()
+	if body.is_in_group("player"):
+		self.scale.x = self.scale.x + 10
+	else:
+		queue_free()
 	
-	queue_free()
+	
 
 
 func despawn() -> void:
