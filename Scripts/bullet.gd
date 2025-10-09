@@ -6,6 +6,7 @@ var speed : int				# bullet speed in pixels?
 var lifetime : float		# lifetime of the bullet in seconds
 var damage : float			# damage
 var direction : Vector2		# bullet direction
+var player_bullet : bool 			# true = player
 
 func _ready() -> void:
 	pass
@@ -23,10 +24,7 @@ static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: 
 	bullet_instance.lifetime = lifetime
 	bullet_instance.damage = damage
 	bullet_instance.direction = direction
-	if player_bullet:
-		bullet_instance.collision_layer = 1
-	else:
-		bullet_instance.collision_mask = 2
+	bullet_instance.player_bullet = player_bullet # change this later
 	return bullet_instance
 
 func fire() -> void:
@@ -36,12 +34,14 @@ func fire() -> void:
 
 
 func _on_body_entered(body) -> void:
-	if body is EnemyBase:
+	if body is EnemyBase && self.player_bullet: # non enemy bullet hit enemy
 		body.hit(damage)
-	elif body.is_in_group("player"):
+		queue_free()
+	elif body.is_in_group("player") && !self.player_bullet: # non player bullet hit player
 		body.take_damage()
-	queue_free() 
-
+		queue_free()
+	elif body is TileMapLayer: # hit the wall
+		queue_free()
 
 func despawn() -> void:
 	# await get_tree().create_timer(lifetime).timeout
