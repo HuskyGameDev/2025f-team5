@@ -33,3 +33,11 @@ static func new_enemy(health: int, speed: int, atkspeed: int, sprite: String) ->
 
 func _ready() -> void:
 	set_cooldown(atkspeed)
+	
+func death() -> void:
+	queue_free()
+	
+func hit(damage: int) -> void:
+	health -= damage
+	if (health <= 0):
+		death()
