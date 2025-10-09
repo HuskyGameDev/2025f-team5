@@ -16,13 +16,17 @@ func _process(delta: float) -> void:
 
 
 @warning_ignore("shadowed_variable")
-static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float) -> Bullet:
+static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float, player_bullet: bool) -> Bullet:
 	var bullet_instance = bullet_scene.instantiate()
 	bullet_instance.set_process(false)
 	bullet_instance.speed = speed
 	bullet_instance.lifetime = lifetime
 	bullet_instance.damage = damage
 	bullet_instance.direction = direction
+	if player_bullet:
+		bullet_instance.collision_layer = 1
+	else:
+		bullet_instance.collision_mask = 2
 	return bullet_instance
 
 func fire() -> void:
@@ -34,13 +38,9 @@ func fire() -> void:
 func _on_body_entered(body) -> void:
 	if body is EnemyBase:
 		body.hit(damage)
-		queue_free()
-	if body.is_in_group("player"):
-		self.scale.x = self.scale.x + 10
-	else:
-		queue_free()
-	
-	
+	elif body.is_in_group("player"):
+		body.take_damage()
+	queue_free() 
 
 
 func despawn() -> void:

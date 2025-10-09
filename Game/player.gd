@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("PrimaryAction") && can_shoot:
-		var shot = Bullet.new_bullet(shootspeed, get_global_mouse_position(), shoot_range, damage)
+		var shot = Bullet.new_bullet(shootspeed, get_global_mouse_position(), shoot_range, damage, true)
 		get_parent().add_child(shot)
 		shot.position = self.position
 		shot.fire()
