@@ -19,3 +19,5 @@ texture = ExtResource("2_rg37i")
 
 [node name="Cooldown" type="Timer" parent="."]
 autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_attack_cooldown_timeout"]

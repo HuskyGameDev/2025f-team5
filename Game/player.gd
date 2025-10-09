@@ -32,8 +32,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("PrimaryAction") && can_shoot:
-		var shot = Bullet.new_bullet(shootspeed, get_global_mouse_position(), shoot_range, damage)
+	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
+		var shot = Bullet.new_bullet(shootspeed, get_global_mouse_position(), shoot_range, damage, true)
 		get_parent().add_child(shot)
 		shot.position = self.position
 		shot.fire()
@@ -55,9 +55,15 @@ func take_damage():
 	
 	# when player dies, change to the dead sprite
 	if health == 0:
-		can_move = false;
-		$AliveSprite.visible = not $AliveSprite.visible
-		$DeadSprite.visible = not $DeadSprite.visible
+		die()
+		
+		
+func die() -> void:
+	can_move = false
+	can_shoot = false
+	$AliveSprite.visible = not $AliveSprite.visible
+	$DeadSprite.visible = not $DeadSprite.visible
+	
 
 func shot_reset():
 	can_shoot = true
