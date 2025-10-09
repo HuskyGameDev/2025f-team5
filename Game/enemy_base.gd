@@ -4,12 +4,12 @@ const enemy_scene: PackedScene = preload("res://Game/enemy_base.tscn")
 
 @export var health = 1	# Damage enemy can take before despawning
 @export var speed = 0	# Movement speed
-@export var atkspeed = 2	# Bullets fired per second
+@export var atkspeed = 2	# Time between each bullet fired
 var texture
 
 	# Insantiates and fires a bullet at the player whenever its attack cooldown expires
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = $bullet.new_bullet(1, $player.get_position(), 5, 1)
+	var bullet_instance = $bullet.new_bullet(1, $player.position - self.position, 5, 1)
 	bullet_instance.fire()
 	
 
@@ -19,14 +19,17 @@ func set_sprite(texture: String) -> void:
 
 	# Called on instantiation to set the attack speed of the enemy
 func set_cooldown(time: int) -> void:
-	$AttackCooldown.wait_time = time
+	$Cooldown.wait_time = time
 
 	# Creates and returns a new enemy instance
 @warning_ignore("shadowed_variable")
-static func new_enemy(health: int, speed: int, atkspeed: int, sprite: String) -> Area2D:
+static func new_enemy(health: int, speed: int, atkspeed: int, sprite: String) -> CharacterBody2D:
 	var enemy_instance = enemy_scene.instantiate()
 	enemy_instance.health = health
 	enemy_instance.speed = speed
 	enemy_instance.set_sprite(sprite)
 	enemy_instance.set_cooldown(atkspeed)
 	return enemy_instance
+
+func _ready() -> void:
+	set_cooldown(atkspeed)
