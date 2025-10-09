@@ -2,9 +2,9 @@ extends CharacterBody2D
 	#Used to load enemy instances
 const enemy_scene: PackedScene = preload("res://Game/enemy_base.tscn")
 
-@export var health = 1	# Damage enemy can take before despawning
-@export var speed = 0	# Movement speed
-@export var atkspeed = 2	# Time between each bullet fired
+@export var health = 1.0	# Damage enemy can take before despawning
+@export var speed = 0.0	# Movement speed
+@export var atkspeed = 2.0	# Time between each bullet fired
 var texture
 
 	# Insantiates and fires a bullet at the player whenever its attack cooldown expires
@@ -37,7 +37,7 @@ func _ready() -> void:
 func death() -> void:
 	queue_free()
 	
-func hit(damage: int) -> void:
+func hit(damage: float) -> void:
 	health -= damage
 	if (health <= 0):
 		death()
