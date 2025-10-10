@@ -30,20 +30,23 @@ static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: 
 func fire() -> void:
 	look_at(direction)
 	set_process(true)
-	despawn()
+	$Lifetime.wait_time = lifetime
 
 
 func _on_body_entered(body) -> void:
 	if body is EnemyBase && self.player_bullet: # non enemy bullet hit enemy
 		body.hit(damage)
-		queue_free()
+		despawn()
 	elif body.is_in_group("player") && !self.player_bullet: # non player bullet hit player
-		body.take_damage()
-		queue_free()
+		body.hit()	# no damage due to health being based on hits instead of value
+		despawn()
 	elif body is TileMapLayer: # hit the wall
-		queue_free()
+		despawn()
 
 func despawn() -> void:
-	# await get_tree().create_timer(lifetime).timeout
-	# queue_free()
-	pass
+	$Lifetime.stop() # prevent issue where timer attempts to trigger when bullet is freed
+	queue_free()
+
+
+func _on_lifetime_timeout() -> void:
+	despawn()

@@ -2,7 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bvci6mdchm5bw" path="res://Game/player.tscn" id="2_ibluu"]
 [ext_resource type="Texture2D" uid="uid://biyrkg4gtuk46" path="res://Art/WallTileSet.png" id="2_lva1o"]
-[ext_resource type="PackedScene" uid="uid://dgmn57pfu3n8b" path="res://Game/enemy_base.tscn" id="3_lva1o"]
+
+[sub_resource type="GDScript" id="GDScript_ibluu"]
+script/source = "extends Node2D
+
+var enemies : Array[EnemyBase] = []
+
+func _ready() -> void:
+	var enemy : EnemyBase = EnemyBase.new_enemy()
+	enemy.position = $EnemySpawn.position
+	add_child(enemy)
+	enemies.append(enemy) #this may cause issues when the enemy is killed
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgkw7"]
 texture = ExtResource("2_lva1o")
@@ -363,12 +374,15 @@ terrain_set_0/terrain_0/color = Color(0.3938389, 0.752044, 1.0039686, 1)
 sources/1 = SubResource("TileSetAtlasSource_wgkw7")
 
 [node name="TestRoom" type="Node2D"]
+script = SubResource("GDScript_ibluu")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAPr/AQACAAAAAAACAPr/AQACAAAAAAADAPr/AQACAAAAAAAGAPr/AQACAAAAAAAHAPr/AQADAAEAAAAHAPv/AQAAAAIAAAAHAPz/AQAAAAIAAAAHAP3/AQAAAAIAAAAHAP7/AQAAAAIAAAAHAP//AQAAAAIAAAD4//r/AQABAAEAAAD4//v/AQAAAAIAAAD4//z/AQAAAAIAAAD4//3/AQAAAAIAAAD4//7/AQAAAAIAAAD4////AQAAAAIAAAD4/wAAAQAAAAIAAAD4/wEAAQAAAAIAAAD4/wIAAQAAAAIAAAD4/wMAAQAAAAIAAAD4/wQAAQABAAMAAAD5//r/AQACAAAAAAD5/wQAAQACAAAAAAD6//r/AQACAAAAAAD6////AQABAAEAAAD6/wAAAQAAAAIAAAD6/wEAAQAAAAIAAAD6/wIAAQAAAAIAAAD6/wMAAQAAAAIAAAD6/wQAAQACAAMAAAD7//r/AQACAAAAAAD7////AQADAAAAAAD7/wQAAQACAAAAAAD8//r/AQACAAAAAAD8/wQAAQACAAAAAAD9//r/AQACAAAAAAD9/wQAAQACAAAAAAD+//r/AQACAAAAAAD+////AQABAAAAAAD+/wQAAQACAAAAAAD///r/AQACAAAAAAD/////AQADAAEAAAD//wAAAQAAAAIAAAD//wEAAQAAAAIAAAD//wIAAQAAAAIAAAD//wMAAQAAAAIAAAD//wQAAQACAAMAAAAAAAQAAQACAAAAAAABAPr/AQACAAAAAAABAAQAAQACAAAAAAACAAQAAQACAAAAAAADAAQAAQACAAAAAAAEAPr/AQACAAAAAAAEAAQAAQACAAAAAAAFAPr/AQACAAAAAAAFAAQAAQACAAAAAAAGAAQAAQACAAAAAAAHAAAAAQAAAAIAAAAHAAEAAQAAAAIAAAAHAAIAAQAAAAIAAAAHAAMAAQAAAAIAAAAHAAQAAQADAAMAAAA=")
 tile_set = SubResource("TileSet_muvul")
 
-[node name="Player" parent="." instance=ExtResource("2_ibluu")]
+[node name="EnemySpawn" type="Marker2D" parent="."]
+visible = false
+position = Vector2(112, -9)
 
-[node name="EnemyBase" parent="." instance=ExtResource("3_lva1o")]
-position = Vector2(186, -33)
+[node name="Player" parent="." instance=ExtResource("2_ibluu")]
+position = Vector2(-98, 67)
