@@ -1,6 +1,6 @@
 class_name EnemyBase extends CharacterBody2D
 	#Used to load enemy instances
-const enemy_scene: PackedScene = preload("res://Game/enemy_base.tscn")
+const enemy_scene: PackedScene = preload("res://Game/Enemy/enemy_base.tscn")
 
 var health : float			# Damage enemy can take before despawning
 var speed : int				# Movement speed

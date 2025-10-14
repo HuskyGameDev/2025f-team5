@@ -15,7 +15,7 @@ func _process(_delta):
 	if (Input.is_action_just_pressed("Dash") && !switched_scene):
 		switched_scene = true
 		remove_child(instance)  # Removes instance and its children
-		first_scene = load("res://Game/test_room.tscn") # repeats the previous steps
+		first_scene = load("res://Game/Room/test_room.tscn") # repeats the previous steps
 		instance = first_scene.instantiate()
 		instance.position = Vector2(320,180)
 		add_child(instance)

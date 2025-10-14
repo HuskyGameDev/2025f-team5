@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci5cw2ix3jrox"
-path="res://.godot/imported/PlayerPlaceholderDead.png-02e9ed2cf68416600ee9f7aca7c13d4e.ctex"
+uid="uid://crsknpa5wybdg"
+path="res://.godot/imported/test_bullet.png-cdc3be17c12d9c4d0e9ca1e763ce8b89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/PlayerPlaceholderDead.png"
-dest_files=["res://.godot/imported/PlayerPlaceholderDead.png-02e9ed2cf68416600ee9f7aca7c13d4e.ctex"]
+source_file="res://Art/Bullet/test_bullet.png"
+dest_files=["res://.godot/imported/test_bullet.png-cdc3be17c12d9c4d0e9ca1e763ce8b89.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://6iqnes5siuqi"]
 
-[ext_resource type="PackedScene" uid="uid://bvci6mdchm5bw" path="res://Game/player.tscn" id="2_ibluu"]
-[ext_resource type="Texture2D" uid="uid://biyrkg4gtuk46" path="res://Art/WallTileSet.png" id="2_lva1o"]
+[ext_resource type="Texture2D" uid="uid://biyrkg4gtuk46" path="res://Art/Tile/WallTileSet.png" id="1_bsmwc"]
+[ext_resource type="PackedScene" uid="uid://bvci6mdchm5bw" path="res://Game/Player/player.tscn" id="2_gqjei"]
 
 [sub_resource type="GDScript" id="GDScript_ibluu"]
 script/source = "extends Node2D
@@ -16,7 +16,7 @@ func _ready() -> void:
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgkw7"]
-texture = ExtResource("2_lva1o")
+texture = ExtResource("1_bsmwc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -384,5 +384,5 @@ tile_set = SubResource("TileSet_muvul")
 visible = false
 position = Vector2(112, -9)
 
-[node name="Player" parent="." instance=ExtResource("2_ibluu")]
+[node name="Player" parent="." instance=ExtResource("2_gqjei")]
 position = Vector2(-98, 67)

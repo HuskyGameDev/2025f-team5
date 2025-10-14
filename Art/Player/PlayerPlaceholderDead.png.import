@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bljmpp1gvnwvk"
-path="res://.godot/imported/target.png-eda7362ee5ba8907ec2b67f6c10c7d2c.ctex"
+uid="uid://ci5cw2ix3jrox"
+path="res://.godot/imported/PlayerPlaceholderDead.png-9354adde6fc6373b6968cd09f0c58370.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/target.png"
-dest_files=["res://.godot/imported/target.png-eda7362ee5ba8907ec2b67f6c10c7d2c.ctex"]
+source_file="res://Art/Player/PlayerPlaceholderDead.png"
+dest_files=["res://.godot/imported/PlayerPlaceholderDead.png-9354adde6fc6373b6968cd09f0c58370.ctex"]
 
 [params]
 

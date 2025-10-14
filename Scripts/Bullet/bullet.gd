@@ -1,6 +1,6 @@
 class_name Bullet extends Area2D
 
-const bullet_scene : PackedScene = preload("res://Game/bullet.tscn")
+const bullet_scene : PackedScene = preload("res://Game/Bullet/bullet.tscn")
 
 var speed : int				# bullet speed in pixels?
 var lifetime : float		# lifetime of the bullet in seconds
