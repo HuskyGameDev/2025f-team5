@@ -17,8 +17,12 @@ func _process(delta: float) -> void:
 
 
 @warning_ignore("shadowed_variable")
-static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float, player_bullet: bool) -> Bullet:
+static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float, player_bullet: bool, bullet_sprite: String, bullet_collision: String) -> Bullet:
 	var bullet_instance = bullet_scene.instantiate()
+	var sprite = load(bullet_sprite)
+	var collision_body_2d = load(bullet_collision)
+	# TODO: find a way to set this specific to the instance, as $Node notation is not allowed in a static function
+
 	bullet_instance.set_process(false)
 	bullet_instance.speed = speed
 	bullet_instance.lifetime = lifetime
@@ -31,8 +35,7 @@ func fire() -> void:
 	look_at(direction)
 	set_process(true)
 	$Lifetime.wait_time = lifetime
-
-
+	
 func _on_body_entered(body) -> void:
 	if body is EnemyBase && self.player_bullet: # non enemy bullet hit enemy
 		body.hit(damage)
