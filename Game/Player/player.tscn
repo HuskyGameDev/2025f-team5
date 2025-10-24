@@ -1,21 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvci6mdchm5bw"]
+[gd_scene load_steps=7 format=3 uid="uid://bvci6mdchm5bw"]
 
 [ext_resource type="Script" uid="uid://8lajf1fe6gt8" path="res://Scripts/Player/player.gd" id="1_h4tjw"]
 [ext_resource type="Texture2D" uid="uid://dcaj1e7muh7r1" path="res://Art/Player/PlayerPlaceholder.png" id="1_kwoj6"]
 [ext_resource type="Texture2D" uid="uid://ci5cw2ix3jrox" path="res://Art/Player/PlayerPlaceholderDead.png" id="2_h4tjw"]
+[ext_resource type="PackedScene" uid="uid://bq2vrn7jx00pk" path="res://Game/Weapon/player_gun.tscn" id="4_vytja"]
+[ext_resource type="Script" uid="uid://o36ao0ajiel4" path="res://Scripts/Weapon/player_gun.gd" id="5_segth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4tjw"]
 size = Vector2(24, 48)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_h4tjw")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="AliveSprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_kwoj6")
 
 [node name="DeadSprite" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 texture = ExtResource("2_h4tjw")
 
 [node name="Area2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h4tjw")
+
+[node name="PlayerGun" parent="." instance=ExtResource("4_vytja")]
+position = Vector2(9, 3)
+script = ExtResource("5_segth")
