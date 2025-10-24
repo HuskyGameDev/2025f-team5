@@ -33,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
-		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, "res://Resource/Bullet/Sprite2D/default_bullet.tres", "res://Resource/Bullet/CollisionShape2D/default_bullet.tres")
+		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
 		get_parent().add_child(shot)
 		shot.position = self.position
 		shot.fire()

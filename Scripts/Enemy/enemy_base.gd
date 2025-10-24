@@ -11,7 +11,7 @@ var damage : float			# Damage bullets do
 
 	# Insantiates and fires a bullet at the player whenever its attack cooldown expires
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = Bullet.new_bullet(speed, Vector2.LEFT, bullet_lifetime, damage, false, "res://Resource/Bullet/Sprite2D/default_bullet.tres", "res://Resource/Bullet/CollisionShape2D/default_bullet.tres")
+	var bullet_instance = Bullet.new_bullet(speed, Vector2.LEFT, bullet_lifetime, damage, false, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
 	get_parent().add_child(bullet_instance)
 	bullet_instance.position = position
 	bullet_instance.fire()
