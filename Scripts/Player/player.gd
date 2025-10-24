@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var bullet_lifetime : float = 2.0	# Lifetime of bullets
 @export var damage : float = 10.0		#
 @export var firerate : float = 0.5
+var reversed = false		# orientation, false = normal, true = reversed
 
 var can_move = true
 var can_dash = true
@@ -32,6 +33,15 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
+	# evil scuffed flip code
+	var mouse_position = get_global_mouse_position() 
+	if (mouse_position.x > global_position.x) && reversed:
+		scale.x = -scale.x
+		reversed = false
+	elif (mouse_position.x < global_position.x) && !reversed:
+		scale.x = -scale.x
+		reversed = true  
+	
 	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
 		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
 		get_parent().add_child(shot)
