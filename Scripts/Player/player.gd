@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
 		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
 		get_parent().add_child(shot)
-		shot.position = self.position
+		shot.global_position = self.get_node("PlayerGun/BulletExitPoint").global_position
 		shot.fire()
 		can_shoot = false
 		get_tree().create_timer(firerate).timeout.connect(shot_reset)

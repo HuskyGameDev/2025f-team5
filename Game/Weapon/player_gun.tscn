@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq2vrn7jx00pk"]
+
+[ext_resource type="Texture2D" uid="uid://7ev8ox3ix34w" path="res://Art/Weapon/player_gun.png" id="1_ywwxl"]
+
+[node name="PlayerGun" type="Node2D"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="PlayerGunSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(5, -1)
+texture = ExtResource("1_ywwxl")
+
+[node name="BulletExitPoint" type="Marker2D" parent="."]
+position = Vector2(13, -3)
