@@ -8,6 +8,9 @@ extends CharacterBody2D
 @export var firerate : float = 0.5
 var reversed = false		# orientation, false = normal, true = reversed
 
+var dna_name = []
+var dna_count = []
+
 var can_move = true
 var can_dash = true
 var can_shoot = true
@@ -73,7 +76,23 @@ func die() -> void:
 	can_shoot = false
 	$AliveSprite.visible = not $AliveSprite.visible
 	$DeadSprite.visible = not $DeadSprite.visible
-	
+
+
 
 func shot_reset():
 	can_shoot = true
+
+func gain_dna(dnatype: String, quantity: int):
+	var index = dna_name.find(dnatype)
+	if index == -1:
+		dna_name.push_back(dnatype)
+		index = dna_name.size() - 1
+		dna_count.push_back(0)
+	dna_count[index] += quantity
+	if dna_count[index] >= Globals.dna_types[dna_name[index]]["rarity"]:
+		dna_up(dnatype)
+		dna_count[index] -= Globals.dna_types[dna_name[index]]["rarity"]
+	pass
+
+func dna_up(dnatype: String):
+	pass
