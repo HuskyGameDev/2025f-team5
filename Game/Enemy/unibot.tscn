@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://7620ws7cgrxq"]
+
+[ext_resource type="Script" uid="uid://dw86l3l8g43rf" path="res://Scripts/Enemy/unibot.gd" id="1_0f4kc"]
+
+[node name="Unibot" type="CharacterBody2D"]
+script = ExtResource("1_0f4kc")
+metadata/_custom_type_script = "uid://bli4u25j6g8fr"
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
