@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://l274038u5man"]
+[gd_scene load_steps=2 format=3 uid="uid://l274038u5man"]
+
+[ext_resource type="PackedScene" uid="uid://s6ayeh6jrs1t" path="res://Game/UI/dna_menu.tscn" id="1_bxvny"]
 
 [node name="TestScene1" type="Node2D"]
 
@@ -10,3 +12,5 @@ offset_bottom = 343.0
 text = "SCENE 1
 
 PRESS SPACE TO CONTINUE"
+
+[node name="DnaMenu" parent="." instance=ExtResource("1_bxvny")]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://s6ayeh6jrs1t"]
+
+[ext_resource type="Texture2D" uid="uid://d486trbd55eg" path="res://Art/UiIcons/DNAICON.png" id="1_li53a"]
+[ext_resource type="Script" uid="uid://cwql788hl7qi6" path="res://Game/UI/dna_menu.gd" id="1_skvpl"]
+
+[node name="DnaMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_skvpl")
+
+[node name="Movingparts" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -450.0
+offset_right = -410.0
+offset_bottom = 40.0
+
+[node name="DnaPanel" type="Panel" parent="Movingparts"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 35.0
+offset_right = 450.0
+offset_bottom = 285.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Movingparts/DnaPanel"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 110.0
+offset_right = 282.0
+offset_bottom = 133.0
+text = "PLACEHOLDER
+:)"
+
+[node name="DnaTab" type="Panel" parent="Movingparts"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 265.0
+offset_right = 489.0
+offset_bottom = 305.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Movingparts/DnaTab"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("1_li53a")
+
+[node name="MenuClosedLocation" type="Marker2D" parent="."]
+position = Vector2(-450, 0)
