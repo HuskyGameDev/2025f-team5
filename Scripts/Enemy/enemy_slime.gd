@@ -1,8 +1,9 @@
 class_name EnemySlime extends EnemyBase
 
 @warning_ignore("shadowed_variable")
-static func new_enemy_slime(health: float = 5.0, speed: int = 100, firerate: float = 2.0, damage: float = 1.0, shot_speed: int = 0, bullet_lifetime: float = 5.0) -> CharacterBody2D:
-	return new_enemy(health, speed, firerate, damage, shot_speed, bullet_lifetime)
+static func new_enemy_slime(texture: String = "res://Art/Enemy/slimewip.png", health: float = 5.0, speed: int = 100, firerate: float = 2.0, damage: float = 1.0, shot_speed: int = 0, bullet_lifetime: float = 5.0) -> CharacterBody2D:
+	var slime = new_enemy(texture, health, speed, firerate, damage, shot_speed, bullet_lifetime)
+	return slime
 
 func find_player() -> Vector2:
 	var player = get_tree().get_nodes_in_group("player")

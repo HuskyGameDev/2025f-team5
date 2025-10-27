@@ -17,12 +17,12 @@ func _on_attack_cooldown_timeout() -> void:
 	bullet_instance.fire()
 
 	# Called on instantiation to set the attack speed of the enemy
-func set_cooldown(time: float) -> void:
+func set_cooldown() -> void:
 	$Cooldown.wait_time = firerate
 
 	# Creates and returns a new enemy instance
 @warning_ignore("shadowed_variable")
-static func new_enemy(health: float = 5.0, speed: int = 200, firerate: float = 2.0, damage: float = 1.0, shot_speed: int = 200, bullet_lifetime: float = 2.0) -> CharacterBody2D:
+static func new_enemy(texture: String = "res://Art/Enemy/target.png", health: float = 5.0, speed: int = 200, firerate: float = 2.0, damage: float = 1.0, shot_speed: int = 200, bullet_lifetime: float = 2.0) -> CharacterBody2D:
 	var enemy_instance = enemy_scene.instantiate()
 	enemy_instance.health = health
 	enemy_instance.speed = speed
@@ -30,7 +30,8 @@ static func new_enemy(health: float = 5.0, speed: int = 200, firerate: float = 2
 	enemy_instance.shot_speed = shot_speed
 	enemy_instance.bullet_lifetime = bullet_lifetime
 	enemy_instance.damage = damage
-	enemy_instance.set_cooldown(firerate)
+	enemy_instance.set_cooldown()
+	enemy_instance.get_node("EnemySprite").texture = load(texture)
 	return enemy_instance
 	
 func death() -> void:
