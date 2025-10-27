@@ -10,6 +10,7 @@ var reversed = false		# orientation, false = normal, true = reversed
 
 var dna_name = []
 var dna_count = []
+signal dna_levelup(type)
 
 var can_move = true
 var can_dash = true
@@ -90,9 +91,6 @@ func gain_dna(dnatype: String, quantity: int):
 		dna_count.push_back(0)
 	dna_count[index] += quantity
 	if dna_count[index] >= Globals.dna_types[dna_name[index]]["rarity"]:
-		dna_up(dnatype)
+		dna_levelup.emit(dnatype)
 		dna_count[index] -= Globals.dna_types[dna_name[index]]["rarity"]
-	pass
-
-func dna_up(dnatype: String):
 	pass
