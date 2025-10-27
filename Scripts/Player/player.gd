@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var damage : float = 10.0		#
 @export var firerate : float = 0.5
 var reversed = false		# orientation, false = normal, true = reversed
+var bullet_type: String = "default"
 
 var dna_name = []
 var dna_count = []
@@ -47,7 +48,7 @@ func _process(_delta: float) -> void:
 		reversed = true  
 	
 	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
-		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
+		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, Globals.bullet_types[bullet_type]["sprite"], Globals.bullet_types[bullet_type]["collision_body"])
 		get_parent().add_child(shot)
 		shot.global_position = self.get_node("PlayerGun/BulletExitPoint").global_position
 		shot.fire()
@@ -83,14 +84,31 @@ func die() -> void:
 func shot_reset():
 	can_shoot = true
 
-func gain_dna(dnatype: String, quantity: int):
-	var index = dna_name.find(dnatype)
+func gain_dna(dna_type: String, quantity: int):
+	var index = dna_name.find(dna_type)
 	if index == -1:
-		dna_name.push_back(dnatype)
+		dna_name.push_back(dna_type)
 		index = dna_name.size() - 1
 		dna_count.push_back(0)
 	dna_count[index] += quantity
 	if dna_count[index] >= Globals.dna_types[dna_name[index]]["rarity"]:
-		dna_levelup.emit(dnatype)
+		dna_levelup.emit(dna_type)
 		dna_count[index] -= Globals.dna_types[dna_name[index]]["rarity"]
 	pass
+
+# Handles changes caused by a dna upgrade
+func dna_changes(dna_type: String, effect_type: String):
+	match effect_type:
+		"all":
+			health += Globals.dna_types[dna_type]["health"]
+			speed += Globals.dna_types[dna_type]["speed"]
+			shot_speed += Globals.dna_types[dna_type]["shot_speed"]
+			bullet_lifetime += Globals.dna_types[dna_type]["bullet_lifetime"]
+			damage += Globals.dna_types[dna_type]["damage"]
+			health += Globals.dna_types[dna_type]["health"]
+			firerate += Globals.dna_types[dna_type]["firerate"]
+			bullet_type = Globals.dna_types[dna_type]["bullet"]
+		"movement":
+			pass
+		"shooting":
+			pass

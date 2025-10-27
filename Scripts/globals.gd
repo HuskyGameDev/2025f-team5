@@ -19,7 +19,7 @@ var dna_types = {
 		"shot_speed": 0,
 		"bullet_lifetime": -1.0,
 		"damage": -5.0,
-		"firefirate": -0.4,
+		"firerate": -0.4,
 		"bullet": "mini"
 	}
 }
