@@ -13,13 +13,38 @@ var bullet_types = {
 # bullet modifier is either null for no changes, or the name of its bullet type
 var dna_types = {
 	"mini": {
-		"rarity": 1, # Rarity describes how many are needed for a level up - 1 means 1 kill
-		"health": 0,
-		"speed": 50,
-		"shot_speed": 0,
-		"bullet_lifetime": -1.0,
-		"damage": -5.0,
-		"firerate": -0.4,
-		"bullet": "mini"
-	}
+		"threshold": 20,
+		"cards": [
+			{
+				"name": "Fast Walk",
+				"effect_type": "movement", #can probably be an enum
+				"description": "High Speed, Low Damage",
+				"positive": "+ Increases your walking speed by 50 units",
+				"negative": "- Decreases damage by 1",
+				"sprite": null,
+				"health": 0,
+				"speed": 50,
+				"shot_speed": 0,
+				"bullet_lifetime": 0,
+				"damage": -1.0,
+				"firerate": 0,
+				"bullet": null,
+			},
+			{
+				"name": "Bullet Spray",
+				"effect_type": "shooting",
+				"description": "Bullet Spray",
+				"positive": "+ Turns your firerate WAY UP",
+				"negative": "- Makes your bullets smaller\n- Large damage decrease",
+				"sprite": null,
+				"health": 0,
+				"speed": 0,
+				"shot_speed": 0,
+				"bullet_lifetime": 0,
+				"damage": -5.0,
+				"firerate": -0.4,
+				"bullet": null,
+			},
+		],
+	},
 }

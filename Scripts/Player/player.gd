@@ -9,10 +9,6 @@ extends CharacterBody2D
 var reversed = false		# orientation, false = normal, true = reversed
 var bullet_type: String = "default"
 
-var dna_name = []
-var dna_count = []
-signal dna_levelup(type)
-
 var can_move = true
 var can_dash = true
 var can_shoot = true
@@ -84,31 +80,14 @@ func die() -> void:
 func shot_reset():
 	can_shoot = true
 
-func gain_dna(dna_type: String, quantity: int):
-	var index = dna_name.find(dna_type)
-	if index == -1:
-		dna_name.push_back(dna_type)
-		index = dna_name.size() - 1
-		dna_count.push_back(0)
-	dna_count[index] += quantity
-	if dna_count[index] >= Globals.dna_types[dna_name[index]]["rarity"]:
-		dna_levelup.emit(dna_type)
-		dna_count[index] -= Globals.dna_types[dna_name[index]]["rarity"]
-	pass
 
 # Handles changes caused by a dna upgrade
-func dna_changes(dna_type: String, effect_type: String):
-	match effect_type:
-		"all":
-			health += Globals.dna_types[dna_type]["health"]
-			speed += Globals.dna_types[dna_type]["speed"]
-			shot_speed += Globals.dna_types[dna_type]["shot_speed"]
-			bullet_lifetime += Globals.dna_types[dna_type]["bullet_lifetime"]
-			damage += Globals.dna_types[dna_type]["damage"]
-			health += Globals.dna_types[dna_type]["health"]
-			firerate += Globals.dna_types[dna_type]["firerate"]
-			bullet_type = Globals.dna_types[dna_type]["bullet"]
-		"movement":
-			pass
-		"shooting":
-			pass
+func dna_changes(card):
+	health += card["health"]
+	speed += card["speed"]
+	shot_speed += card["shot_speed"]
+	bullet_lifetime += card["bullet_lifetime"]
+	damage += card["damage"]
+	health += card["health"]
+	firerate += card["firerate"]
+	bullet_type = card["bullet"]
