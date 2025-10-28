@@ -37,7 +37,6 @@ func menu_notify():
 func get_dna(type: String):
 	# will be UI stuff here eventually but instead we'll do placeholder
 	menu_notify()
-	
 	get_tree().create_timer(5).timeout.connect(Callable(self,"temp").bind(type))
 
 func temp(type: String):
