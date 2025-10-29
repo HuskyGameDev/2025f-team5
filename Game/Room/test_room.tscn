@@ -417,6 +417,3 @@ position = Vector2(112, -9)
 
 [node name="Player" parent="." instance=ExtResource("2_gqjei")]
 position = Vector2(-98, 67)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
