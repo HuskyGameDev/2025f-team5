@@ -66,12 +66,12 @@ layout_mode = 2
 [node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Movement"
+text = "NO DNA"
 horizontal_alignment = 1
 
 [node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "NO DNA"
+text = "-"
 horizontal_alignment = 1
 
 [node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
@@ -101,12 +101,12 @@ layout_mode = 2
 [node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Bullet"
+text = "NO DNA"
 horizontal_alignment = 1
 
 [node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "NO DNA"
+text = "-"
 horizontal_alignment = 1
 
 [node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
@@ -135,12 +135,12 @@ layout_mode = 2
 [node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Fire Path"
+text = "NO DNA"
 horizontal_alignment = 1
 
 [node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "NO DNA"
+text = "-"
 horizontal_alignment = 1
 
 [node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]

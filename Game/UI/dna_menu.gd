@@ -24,6 +24,11 @@ var queued_upgrades = []
 @onready var option_three_type := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer/DnaType
 @onready var option_three_desc := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer/DnaDesc
 
+# These are for proof of concept for displaying current dna, unfinished.
+@onready var card_one_name := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer/CardName
+@onready var card_one_type := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer/DnaType
+@onready var card_one_desc := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer/DnaDesc
+
 func _input (event):
 	if event.is_action_pressed("DNA"):
 		if closed:
@@ -83,10 +88,18 @@ func enqueue_dna(cards_queue):
 
 func _select_option_one():
 	DnaHandler.selected_card(card_options[0])
+	add_card(card_options[0])
 	toggle_notify()
 func _select_option_two():
 	DnaHandler.selected_card(card_options[1])
+	add_card(card_options[1])
 	toggle_notify()
 func _select_option_three():
 	DnaHandler.selected_card(card_options[2])
+	add_card(card_options[2])
 	toggle_notify()
+
+func add_card(card):
+	card_one_name.text = card["name"]
+	card_one_type.text = card["effect_type"]
+	card_one_desc.text = card["description"]

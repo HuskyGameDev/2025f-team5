@@ -37,9 +37,20 @@ func send_cards():
 
 func selected_card(card):
 	current_cards.push_back(card)
-	get_tree().get_first_node_in_group("player").dna_changes(card)
 	if queued_upgrades.size() > 0:
 		send_cards()
+	else:
+		get_tree().get_first_node_in_group("player").update_stats(calculate_changes())
 
 func calculate_changes():
-	pass
+	var updated_stats = Globals.player_base
+	updated_stats["bullet"] = null
+	for card in current_cards:
+		updated_stats["health"] += card["health"]
+		updated_stats["speed"] += card["speed"]
+		updated_stats["shot_speed"] += card["shot_speed"]
+		updated_stats["bullet_lifetime"] += card["bullet_lifetime"]
+		updated_stats["damage"] += card["damage"]
+		updated_stats["firerate"] += card["firerate"]
+		updated_stats["bullet"] = card["bullet"] if card["bullet"] != null else updated_stats["bullet"]
+	return updated_stats

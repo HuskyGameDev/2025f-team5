@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var health : int = 5				# Health of player
-@export var speed : int = 200			# Speed of player
-@export var shot_speed : int = 200		# Speed of bullets
-@export var bullet_lifetime : float = 2.0	# Lifetime of bullets
-@export var damage : float = 10.0		#
-@export var firerate : float = 0.5
+@onready var health : int =  Globals.player_base["health"]
+@onready var speed : int = Globals.player_base["speed"]
+@onready var shot_speed : int = Globals.player_base["shot_speed"]
+@onready var bullet_lifetime : float = Globals.player_base["bullet_lifetime"]
+@onready var damage : float = Globals.player_base["damage"]
+@onready var firerate : float = Globals.player_base["firerate"]
 var reversed = false		# orientation, false = normal, true = reversed
 var bullet_type: String = "default"
 
@@ -80,16 +80,20 @@ func die() -> void:
 func shot_reset():
 	can_shoot = true
 
+func reset_stats():
+	health =  Globals.player_base["health"]
+	speed = Globals.player_base["speed"]
+	shot_speed = Globals.player_base["shot_speed"]
+	bullet_lifetime = Globals.player_base["bullet_lifetime"]
+	damage = Globals.player_base["damage"]
+	firerate = Globals.player_base["firerate"]
 
-# Handles changes caused by a dna upgrade
-func dna_changes(card):
-	health += card["health"]
-	speed += card["speed"]
-	shot_speed += card["shot_speed"]
-	bullet_lifetime += card["bullet_lifetime"]
-	damage += card["damage"]
-	health += card["health"]
-	firerate += card["firerate"]
-	var nullbuffer = card["bullet"]
-	if nullbuffer != null:
-		bullet_type = nullbuffer
+func update_stats(update):
+	health = update["health"] if update["health"] > Globals.player_base["health"] else Globals.player_base["health"]
+	speed = update["speed"] if update["speed"] > Globals.player_base["speed"] else Globals.player_base["speed"]
+	shot_speed = update["shot_speed"] if update["shot_speed"] > Globals.player_base["shot_speed"] else Globals.player_base["shot_speed"]
+	bullet_lifetime = update["bullet_lifetime"] if update["bullet_lifetime"] > Globals.player_base["bullet_lifetime"] else Globals.player_base["bullet_lifetime"]
+	damage = update["damage"] if update["damage"] > Globals.player_base["damage"] else Globals.player_base["damage"]
+	firerate = update["firerate"] if update["firerate"] > Globals.player_base["firerate"] else Globals.player_base["firerate"]
+	if update["bullet"] != null:
+		bullet_type = update["bullet"]

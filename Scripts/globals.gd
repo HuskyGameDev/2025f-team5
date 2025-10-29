@@ -1,6 +1,23 @@
 extends Node
 # Create globals for bullet body and sprite
 
+var player_base = {
+	"health" = 5,
+	"speed" = 200,
+	"shot_speed" = 200,
+	"bullet_lifetime" = 2.0,
+	"damage" = 10.0,
+	"firerate" = 0.5
+}
+var player_min = {
+	"health" = 1,
+	"speed" = 40,
+	"shot_speed" = 20,
+	"bullet_lifetime" = 0.3,
+	"damage" = 1.0,
+	"firerate" = 0.5
+}
+
 var bullet_types = {
 	"default": {"sprite": "res://Resource/Bullet/Sprite2D/default_bullet.tres", "collision_body": "res://Resource/Bullet/CollisionShape2D/default_bullet.tres"},
 	"mini": {"sprite": "res://Resource/Bullet/Sprite2D/mini_bullet.tres", "collision_body": "res://Resource/Bullet/CollisionShape2D/mini_bullet.tres"}
@@ -42,7 +59,7 @@ var dna_types = {
 				"bullet_lifetime": 0,
 				"damage": -5.0,
 				"firerate": -0.4,
-				"bullet": null,
+				"bullet": "mini",
 			},
 			{
 				"name": "Nothing Ever Happens",
