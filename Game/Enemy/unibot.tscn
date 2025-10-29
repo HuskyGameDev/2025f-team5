@@ -244,8 +244,11 @@ shape = SubResource("CapsuleShape2D_q31vi")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mhto6")
-frame_progress = 0.053884335
+frame_progress = 0.603192
 offset = Vector2(-12, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
 autostart = true
+
+[node name="Attacking" type="Timer" parent="."]
+wait_time = 0.1
