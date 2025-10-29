@@ -1,9 +1,4 @@
 extends Node
-
-# This might need changed later but this is for referencing UI elements from anywhere
-# - Values are set by the UI elements on _ready()
-var dna_menu
-
 # Create globals for bullet body and sprite
 
 var bullet_types = {

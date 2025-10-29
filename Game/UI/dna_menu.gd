@@ -33,7 +33,6 @@ func _input (event):
 	pass
 
 func _ready():
-	Globals.dna_menu = self
 	menu_hide()
 
 func menu_hide():

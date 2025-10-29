@@ -92,4 +92,4 @@ func dna_changes(card):
 	firerate += card["firerate"]
 	var nullbuffer = card["bullet"]
 	if nullbuffer != null:
-		bullet_type = nullbuffer	
+		bullet_type = nullbuffer

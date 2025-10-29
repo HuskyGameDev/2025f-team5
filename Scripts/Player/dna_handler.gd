@@ -20,9 +20,11 @@ func queue_size():
 	return queued_upgrades.size()
 
 func pop_queue():
-	send_cards(queued_upgrades.pop_front())
+	if queued_upgrades.size() > 0:
+		send_cards()
 
-func send_cards(dna_type: String):
+func send_cards():
+	var dna_type = queued_upgrades.pop_front()
 	var cards = Globals.dna_types[dna_type]["cards"]
 	var card_options = []
 	randomize()
@@ -31,8 +33,13 @@ func send_cards(dna_type: String):
 	card_options.push_back(cards.pick_random())
 	cards.erase(card_options[1])
 	card_options.push_back(cards.pick_random())
-	Globals.dna_menu.get_dna(card_options)
+	$"../Main/CanvasLayer/UI/DnaMenu".get_dna(card_options)
 
 func selected_card(card):
 	current_cards.push_back(card)
 	get_tree().get_first_node_in_group("player").dna_changes(card)
+	if queued_upgrades.size() > 0:
+		send_cards()
+
+func calculate_changes():
+	pass
