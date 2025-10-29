@@ -3,6 +3,8 @@ extends Node
 @export var current_dna = {}
 var queued_upgrades = []
 
+var current_cards = []
+
 func reset_current_dna() -> void:
 	for dna_type in Globals.dna_types.keys():
 		current_dna[dna_type] = 0
@@ -30,4 +32,7 @@ func send_cards(dna_type: String):
 	cards.erase(card_options[1])
 	card_options.push_back(cards.pick_random())
 	Globals.dna_menu.get_dna(card_options)
-	
+
+func selected_card(card):
+	current_cards.push_back(card)
+	get_tree().get_first_node_in_group("player").dna_changes(card)
