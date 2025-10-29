@@ -31,6 +31,7 @@ func fire() -> void:
 	look_at(direction)
 	set_process(true)
 	$Lifetime.wait_time = lifetime
+	$Lifetime.start()
 
 
 func _on_body_entered(body) -> void:
