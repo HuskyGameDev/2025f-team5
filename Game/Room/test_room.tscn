@@ -9,15 +9,16 @@ script/source = "extends Node2D
 var enemies : Array[EnemyBase] = []
 
 func _ready() -> void:
-	#var enemy : EnemyBase = EnemyBase.new_enemy()
-	#enemy.position = $EnemySpawn.position
-	#add_child(enemy)
-	#enemies.append(enemy) #this may cause issues when the enemy is killed
-
-	var slime : EnemyBase = EnemySlime.new_enemy_slime()
-	slime.position = $EnemySpawn.position
+	var enemy : EnemyBase = EnemyBase.new_enemy()
+	enemy.position = $EnemySpawn.position
+	add_child(enemy)
+	enemies.append(enemy) #this may cause issues when the enemy is killed
+	
+	var slime : EnemySlime = EnemySlime.new_enemy()
+	slime.position = Vector2(-128,-128)
 	add_child(slime)
 	enemies.append(slime)
+	
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgkw7"]

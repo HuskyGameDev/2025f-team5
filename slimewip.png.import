@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6kitrxlth35m"
-path="res://.godot/imported/slimewip.png-fd32753c9a1458dd368de2d05daf6c15.ctex"
+path="res://.godot/imported/slimewip.png-db469a09b4b4fd229daf82f57701d14d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Enemy/slimewip.png"
-dest_files=["res://.godot/imported/slimewip.png-fd32753c9a1458dd368de2d05daf6c15.ctex"]
+source_file="res://slimewip.png"
+dest_files=["res://.godot/imported/slimewip.png-db469a09b4b4fd229daf82f57701d14d.ctex"]
 
 [params]
 
