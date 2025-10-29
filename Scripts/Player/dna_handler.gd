@@ -1,10 +1,33 @@
 extends Node
 
 @export var current_dna = {}
+var queued_upgrades = []
 
 func reset_current_dna() -> void:
 	for dna_type in Globals.dna_types.keys():
 		current_dna[dna_type] = 0
 
 func gain_dna(dna_type: String, quantity: int):
-	current_dna[dna_type] += quantity
+	current_dna[dna_type] = current_dna.get(dna_type, 0) + quantity
+	var threshold = Globals.dna_types[dna_type]["threshold"]
+	if current_dna[dna_type] >= threshold:
+		current_dna[dna_type] -= threshold
+		queued_upgrades.push_back(dna_type)
+
+func queue_size():
+	return queued_upgrades.size()
+
+func pop_queue():
+	send_cards(queued_upgrades.pop_front())
+
+func send_cards(dna_type: String):
+	var cards = Globals.dna_types[dna_type]["cards"]
+	var card_options = []
+	randomize()
+	card_options.push_back(cards.pick_random())
+	cards.erase(card_options[0])
+	card_options.push_back(cards.pick_random())
+	cards.erase(card_options[1])
+	card_options.push_back(cards.pick_random())
+	Globals.dna_menu.get_dna(card_options)
+	

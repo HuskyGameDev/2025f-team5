@@ -1,5 +1,9 @@
 extends Node
 
+# This might need changed later but this is for referencing UI elements from anywhere
+# - Values are set by the UI elements on _ready()
+var dna_menu
+
 # Create globals for bullet body and sprite
 
 var bullet_types = {
@@ -45,6 +49,21 @@ var dna_types = {
 				"firerate": -0.4,
 				"bullet": null,
 			},
+			{
+				"name": "Nothing Ever Happens",
+				"effect_type": "None",
+				"description": "Nothing ever happens",
+				"positive": "+ N/a",
+				"negative": "- N/a",
+				"sprite": null,
+				"health": 0,
+				"speed": 0,
+				"shot_speed": 0,
+				"bullet_lifetime": 0,
+				"damage": 0,
+				"firerate": 0,
+				"bullet": null,
+			}
 		],
 	},
 }

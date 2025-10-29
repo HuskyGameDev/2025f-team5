@@ -3,6 +3,17 @@ extends Control
 var closed : bool = false
 var notif: bool = false
 
+@onready var mutations_container := $Movingparts/DnaPanel/MarginContainer/Mutations
+@onready var mutations_options := $Movingparts/DnaPanel/MarginContainer/MutationOptions
+
+# Temp variables to solve the issue of long links
+@onready var option_one_type := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer/DnaType
+@onready var option_one_desc := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer/DnaDesc
+@onready var option_two_type := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer/DnaType
+@onready var option_two_desc := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer/DnaDesc
+@onready var option_three_type := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer/DnaType
+@onready var option_three_desc := $Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer/DnaDesc
+
 func _input (event):
 	if event.is_action_pressed("DNA"):
 		if closed:
@@ -12,9 +23,8 @@ func _input (event):
 	pass
 
 func _ready():
+	Globals.dna_menu = self
 	menu_hide()
-	var player = get_tree().get_first_node_in_group("player")
-	player.dna_levelup.connect(get_dna)
 
 func menu_hide():
 	if notif == false:
@@ -32,13 +42,21 @@ func menu_notify():
 	$Movingparts/DnaTab/alert.show()
 	notif = true
 	if hidden: show()
-	menu_hide()
+	mutations_container.hide()
+	mutations_options.show()
+	if closed: menu_hide()
 
-func get_dna(type: String):
-	# will be UI stuff here eventually but instead we'll do placeholder
+func get_dna(cards):
+	# some barebones UI stuff is here now, definitely needs rework as I'm sure the massive links show
 	menu_notify()
-	get_tree().create_timer(5).timeout.connect(Callable(self,"temp").bind(type))
+	option_one_type.text = cards[0]["effect_type"]
+	option_one_desc.text = cards[0]["description"]
+	option_two_type.text = cards[1]["effect_type"]
+	option_two_desc.text = cards[1]["description"]
+	option_three_type.text = cards[2]["effect_type"]
+	option_three_desc.text = cards[2]["description"]
+	get_tree().create_timer(5).timeout.connect(Callable(self,"temp").bind(cards[0]))
 
-func temp(type: String):
-	get_tree().get_first_node_in_group("player").dna_changes(type, "all")
+func temp(card):
+	get_tree().get_first_node_in_group("player").dna_changes(card)
 	pass
