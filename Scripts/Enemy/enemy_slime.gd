@@ -25,11 +25,10 @@ func find_player() -> Vector2:
 func _physics_process(delta: float) -> void:
 	var player_direction = find_player() - global_position
 	velocity = player_direction * speed * delta
-	move_and_slide() 
-	
-# This doesn't work yet
+	move_and_slide()
+
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = Bullet.new_bullet(shot_speed, Vector2.LEFT, bullet_lifetime, damage, false)
+	var bullet_instance = Bullet.new_bullet(shot_speed, Vector2(0,0), bullet_lifetime, damage, false)
 	get_parent().add_child(bullet_instance)
 	bullet_instance.position = position
 	bullet_instance.fire()
