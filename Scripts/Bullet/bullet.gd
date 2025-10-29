@@ -17,8 +17,12 @@ func _process(delta: float) -> void:
 
 
 @warning_ignore("shadowed_variable")
-static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float, player_bullet: bool) -> Bullet:
+static func new_bullet(speed: int, direction: Vector2, lifetime: float, damage: float, player_bullet: bool, bullet_sprite: String, bullet_collision: String) -> Bullet:
 	var bullet_instance = bullet_scene.instantiate()
+	var sprite = load(bullet_sprite)
+	var collision_body_2d = load(bullet_collision)
+	bullet_instance.find_child("Sprite2D", false).texture = sprite
+	bullet_instance.find_child("CollisionShape2D", false).shape = collision_body_2d
 	bullet_instance.set_process(false)
 	bullet_instance.speed = speed
 	bullet_instance.lifetime = lifetime
