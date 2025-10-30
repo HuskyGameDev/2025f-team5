@@ -1,0 +1,320 @@
+[gd_scene load_steps=4 format=3 uid="uid://s6ayeh6jrs1t"]
+
+[ext_resource type="Texture2D" uid="uid://d486trbd55eg" path="res://Art/UiIcons/DNAICON.png" id="1_li53a"]
+[ext_resource type="Script" uid="uid://cwql788hl7qi6" path="res://Game/UI/dna_menu.gd" id="1_skvpl"]
+[ext_resource type="Texture2D" uid="uid://c82mx60qjw4wd" path="res://Art/UiIcons/notifcation.png" id="3_8l1wn"]
+
+[node name="DnaMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_skvpl")
+
+[node name="Movingparts" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DnaPanel" type="Panel" parent="Movingparts"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 35.0
+offset_right = 450.0
+offset_bottom = 285.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mutations" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "MUTATIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Categories" type="HBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Movement" type="Panel" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement"]
+clip_contents = true
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 223.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "NO DNA"
+horizontal_alignment = 1
+
+[node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "-"
+horizontal_alignment = 1
+
+[node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "-"
+horizontal_alignment = 1
+
+[node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_li53a")
+stretch_mode = 3
+
+[node name="Bullet" type="Panel" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet"]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 223.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "NO DNA"
+horizontal_alignment = 1
+
+[node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "-"
+horizontal_alignment = 1
+
+[node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "-"
+horizontal_alignment = 1
+
+[node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_li53a")
+stretch_mode = 3
+
+[node name="Fire Path" type="Panel" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path"]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 223.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "NO DNA"
+horizontal_alignment = 1
+
+[node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "-"
+horizontal_alignment = 1
+
+[node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "-"
+horizontal_alignment = 1
+
+[node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_li53a")
+stretch_mode = 3
+
+[node name="MutationOptions" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "MUTATION OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Categories" type="HBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionOne" type="Panel" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne"]
+clip_contents = true
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 223.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "<card name>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "<dna type>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "<dna desc>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_li53a")
+stretch_mode = 3
+
+[node name="Select" type="Button" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select"
+
+[node name="OptionTwo" type="Panel" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo"]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 223.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "<card name>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "<dna type>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "<dna desc>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_li53a")
+stretch_mode = 3
+
+[node name="Select" type="Button" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select"
+
+[node name="OptionThree" type="Panel" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree"]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 223.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "<card name>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "<dna type>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "<dna desc>"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_li53a")
+stretch_mode = 3
+
+[node name="Select" type="Button" parent="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select"
+
+[node name="DnaTab" type="Panel" parent="Movingparts"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 265.0
+offset_right = 489.0
+offset_bottom = 305.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Movingparts/DnaTab"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("1_li53a")
+
+[node name="alert" type="Sprite2D" parent="Movingparts/DnaTab"]
+visible = false
+position = Vector2(20, -18)
+scale = Vector2(2, 2)
+texture = ExtResource("3_8l1wn")
+
+[node name="MenuNotifyLocation" type="Marker2D" parent="."]
+position = Vector2(-450, 0)
+
+[connection signal="pressed" from="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionOne/MarginContainer/VBoxContainer/Select" to="." method="_select_option_one"]
+[connection signal="pressed" from="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionTwo/MarginContainer/VBoxContainer/Select" to="." method="_select_option_two"]
+[connection signal="pressed" from="Movingparts/DnaPanel/MarginContainer/MutationOptions/Categories/OptionThree/MarginContainer/VBoxContainer/Select" to="." method="_select_option_three"]
