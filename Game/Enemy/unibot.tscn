@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://7620ws7cgrxq"]
+[gd_scene load_steps=33 format=3 uid="uid://5mykmx5t2tno"]
 
 [ext_resource type="Script" uid="uid://dw86l3l8g43rf" path="res://Scripts/Enemy/unibot.gd" id="1_0f4kc"]
 [ext_resource type="Texture2D" uid="uid://dmrmswciwj6pk" path="res://Art/Enemy/UnibotSpriteSheet.png" id="2_q31vi"]
@@ -236,6 +236,7 @@ animations = [{
 }]
 
 [node name="Unibot" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_0f4kc")
 metadata/_custom_type_script = "uid://bli4u25j6g8fr"
 
@@ -244,7 +245,7 @@ shape = SubResource("CapsuleShape2D_q31vi")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mhto6")
-frame_progress = 0.603192
+animation = &"moveAndChargeBackwards"
 offset = Vector2(-12, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
@@ -252,3 +253,8 @@ autostart = true
 
 [node name="Attacking" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
+
+[connection signal="animation_looped" from="EnemyAnimation" to="." method="_on_enemy_animation_animation_looped"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Attacking" to="." method="_on_attacking_timeout"]

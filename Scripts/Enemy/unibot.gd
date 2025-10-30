@@ -2,27 +2,45 @@ class_name Unibot extends EnemyBase
 const enemy_unibot_scene: PackedScene = preload("res://Game/Enemy/unibot.tscn")
 
 var attack_duration : float # how long the enemy attacks for
+var attacking : bool # determines if the enemy is ready to shoot or not
+var player_position : Vector2 # the position of the player when an attack is started
+
+# variables for moving in a circle
+var radius : float
+var angle = 0
+var d = 0
 
 	# starts attack pattern when the attack cooldown ends
 func _on_attack_cooldown_timeout() -> void:
 	$Cooldown.set_paused(true)
 	$Attacking.set_paused(false)
+	set_animation("moveAndChargeForwards")
 	get_tree().create_timer(attack_duration).timeout.connect(attack_over)
+	player_position = get_tree().get_first_node_in_group("player").position
+	
+	# calculating circular movement
+	radius = player_position.distance_to(position)
+	print(radius)
 	
 
 	# shoots a bullet 
-func _on_attacking_timeout() -> void:
-	var bullet_instance = Bullet.new_bullet(speed, Vector2.LEFT, bullet_lifetime, damage, false, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
-	get_parent().add_child(bullet_instance)
-	bullet_instance.position = position
-	bullet_instance.fire()
+	# shooting is currently disabled while I am trying to make movement work
+#func _on_attacking_timeout() -> void:
+	#if(attacking):
+		#var bullet_instance = Bullet.new_bullet(shot_speed, Vector2.LEFT, bullet_lifetime, damage, false, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
+		#get_parent().add_child(bullet_instance)
+		#bullet_instance.position = position
+		#bullet_instance.fire()
+		
 	
+
 
 	# resets to idle state after attack
 func attack_over() -> void:
 	$Cooldown.set_paused(false)
 	$Attacking.set_paused(true)
 	$EnemyAnimation.play("idle", 1, false)
+	attacking = false
 	
 
 	# sets animation to given animation
@@ -32,7 +50,7 @@ func set_animation(animation: String) -> void:
 
 	# Creates and returns a new enemy instance
 @warning_ignore("shadowed_variable_base_class", "shadowed_variable")
-static func new_enemy(_sprite: Sprite2D = null, health: float = 5.0, speed: int = 200, firerate: float = 2.0, damage: float = 1.0, shot_speed: int = 200, bullet_lifetime: float = 2.0, attack_duration: float = 4.0) -> CharacterBody2D:
+static func new_enemy(_sprite: Sprite2D = null, health: float = 5.0, speed: int = 2, firerate: float = 2.0, damage: float = 1.0, shot_speed: int = 200, bullet_lifetime: float = 2.0, attack_duration: float = 4.0) -> CharacterBody2D:
 	var enemy_instance = enemy_unibot_scene.instantiate()
 	enemy_instance.health = health
 	enemy_instance.speed = speed
@@ -47,3 +65,21 @@ static func new_enemy(_sprite: Sprite2D = null, health: float = 5.0, speed: int 
 func _ready() -> void:
 	set_cooldown(attack_duration)
 	set_animation("idle")
+	$Attacking.set_paused(true)
+
+	# sets the animation from charging to shooting after the charging animation completes
+func _on_enemy_animation_animation_looped() -> void:
+	if($EnemyAnimation.get_animation() == "moveAndChargeForwards"):
+		set_animation("moveAndShootForwards")
+		attacking = true
+	elif($EnemyAnimation.get_animation() == "moveAndChargeBackwards"):
+		set_animation("moveAndShootBackwards")
+		attacking = true
+
+func _physics_process(delta: float) -> void:
+	# move the unibot
+	if(attacking):
+		d += delta
+		velocity.x = (cos(d * speed) * radius * 2)
+		velocity.y = (sin(d * speed) * radius * 2)
+		move_and_slide()
