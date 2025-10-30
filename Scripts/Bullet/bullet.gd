@@ -35,7 +35,9 @@ func fire() -> void:
 	look_at(direction)
 	set_process(true)
 	$Lifetime.wait_time = lifetime
-	
+	$Lifetime.start()
+
+
 func _on_body_entered(body) -> void:
 	if body is EnemyBase && self.player_bullet: # non enemy bullet hit enemy
 		body.hit(damage)

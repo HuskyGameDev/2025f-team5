@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dti72b4p2o8dl"]
+
+[ext_resource type="Script" uid="uid://drvifx6ufw2dr" path="res://Scripts/Enemy/enemy_slime.gd" id="1_1dthq"]
+[ext_resource type="Texture2D" uid="uid://mmjhppk2dyjk" path="res://Art/Enemy/slimeupdated.png" id="2_nal8d"]
+
+[node name="EnemySlime" type="CharacterBody2D"]
+motion_mode = 1
+safe_margin = 1.0
+script = ExtResource("1_1dthq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(24, 24, -24, 24, -24, -16, -16, -24, 16, -24, 24, -16)
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+position = Vector2(1.9073486e-06, -9.536743e-07)
+scale = Vector2(1.5000001, 1.5)
+texture = ExtResource("2_nal8d")
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -9,12 +9,18 @@ extends CharacterBody2D
 var reversed = false		# orientation, false = normal, true = reversed
 var bullet_type: String = "default"
 
-var can_move = true
-var can_dash = true
-var can_shoot = true
+var can_move : bool = true
+var can_dash : bool = true
+var can_shoot : bool = true
+var is_dashing : bool = false
+var is_alive : bool = true
 
 # Handles moving the character around
 func _physics_process(_delta: float) -> void:	
+	# player is dead and can't do anything
+	if(!is_alive):
+		return
+	
 	if can_move:
 		# get the input direction and handle the movement/deceleration.
 		# moving left or right
@@ -22,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = input_direction * speed
 		
 		# dashing
-		if Input.is_action_pressed("Dash") && can_dash:
+		if Input.is_action_pressed("Dash") && can_dash && (velocity.x + velocity.y) != 0:
 			can_move = false
 			velocity = velocity * 4
 			
@@ -30,10 +36,15 @@ func _physics_process(_delta: float) -> void:
 			get_tree().create_timer(0.15).timeout.connect(end_dash)
 			get_tree().create_timer(0.5).timeout.connect(dash_reset)
 			can_dash = false
+			is_dashing = true
 		
 	move_and_slide()
 
 func _process(_delta: float) -> void:
+	# player is dead and can't do anything
+	if(!is_alive):
+		return
+	
 	# evil scuffed flip code
 	var mouse_position = get_global_mouse_position() 
 	if (mouse_position.x > global_position.x) && reversed:
@@ -55,6 +66,7 @@ func _process(_delta: float) -> void:
 # Called when a dash ends, allows the player to control movement again
 func end_dash():
 	can_move = true
+	is_dashing = false
 	
 # Called when dash cooldown ends, allows the player to dash again
 func dash_reset():
@@ -62,7 +74,8 @@ func dash_reset():
 	
 # Basic take damage function
 func hit():
-	health -= 1
+	if(!is_dashing):
+		health -= 1
 	
 	# when player dies, change to the dead sprite
 	if health == 0:
@@ -72,10 +85,10 @@ func hit():
 func die() -> void:
 	can_move = false
 	can_shoot = false
+	velocity = velocity * 0
 	$AliveSprite.visible = not $AliveSprite.visible
 	$DeadSprite.visible = not $DeadSprite.visible
-
-
+	is_alive = false
 
 func shot_reset():
 	can_shoot = true
