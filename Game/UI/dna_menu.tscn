@@ -68,17 +68,20 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "NO DNA"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "-"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "-"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -103,16 +106,19 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "NO DNA"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "-"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "-"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -137,16 +143,19 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "NO DNA"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaType" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "-"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaDesc" type="Label" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "-"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DnaIcon" type="TextureRect" parent="Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer"]
 layout_mode = 2

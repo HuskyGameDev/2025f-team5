@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="BaseDna" load_steps=8 format=3 uid="uid://4pcrnwwkr7f5"]
+
+[ext_resource type="Script" uid="uid://7y0qn5u1hpb8" path="res://Scripts/Player/dna_card.gd" id="1_uwil1"]
+[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/base_dna.gd" id="2_i1yho"]
+[ext_resource type="Texture2D" uid="uid://3h4pdnab6jjk" path="res://Resource/Bullet/Sprite2D/mini_bullet.tres" id="2_mdgkx"]
+[ext_resource type="Resource" uid="uid://m18n3l01o34o" path="res://Resource/Bullet/Bullets/default.tres" id="2_rleg0"]
+[ext_resource type="Resource" uid="uid://b8ugowge3wjbf" path="res://Resource/Bullet/Bullets/mini.tres" id="4_u78q5"]
+
+[sub_resource type="Resource" id="Resource_uwil1"]
+script = ExtResource("1_uwil1")
+cardname = "Fast Walk"
+description = "High speed, Low Damage."
+positives = Array[String](["+ Increased walking speed by 50 units"])
+negatives = Array[String](["- Decreases damage by 1"])
+sprite = ExtResource("2_mdgkx")
+speed = 50
+damage = -1.0
+bullet = ExtResource("2_rleg0")
+metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
+
+[sub_resource type="Resource" id="Resource_rleg0"]
+script = ExtResource("1_uwil1")
+cardname = "Bullet Spray"
+effectype = 1
+description = "Bullet Spray!"
+positives = Array[String](["+ Turns your firerate WAY up"])
+negatives = Array[String](["- Makes your bullets smaller", "- Large damage decrease"])
+damage = -5.0
+firerate = -0.4
+bullet = ExtResource("4_u78q5")
+metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
+
+[resource]
+script = ExtResource("2_i1yho")
+dna_name = "mini"
+dna_threshold = 20
+cards = Array[ExtResource("1_uwil1")]([SubResource("Resource_uwil1"), SubResource("Resource_rleg0")])
+metadata/_custom_type_script = "uid://baf8faixh8jue"
