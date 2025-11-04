@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://l274038u5man"]
+[gd_scene load_steps=3 format=3 uid="uid://l274038u5man"]
 
 [ext_resource type="Script" uid="uid://dqdt0hmmfuqfr" path="res://Game/test_scene_1.gd" id="1_ouv0h"]
+[ext_resource type="Resource" uid="uid://70weo23wdh3w" path="res://Resource/Dna/mini.tres" id="2_huvir"]
 
 [node name="TestScene1" type="Node2D"]
 script = ExtResource("1_ouv0h")
+dna_type = ExtResource("2_huvir")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 475.0

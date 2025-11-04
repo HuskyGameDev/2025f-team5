@@ -16,24 +16,44 @@ func gain_dna(dna_type: String, quantity: int):
 		current_dna[dna_type] -= threshold
 		queued_upgrades.push_back(dna_type)
 
+func gain_dna_resource(dna: BaseDna, quantity: int):
+	var dna_type = dna.dna_name
+	current_dna[dna_type] = current_dna.get(dna_type, 0) + quantity
+	var threshold = dna.dna_threshold
+	if current_dna[dna_type] >= threshold:
+		current_dna[dna_type] -= threshold
+		queued_upgrades.push_back(dna)
+
 func queue_size():
 	return queued_upgrades.size()
 
 func pop_queue():
 	if queued_upgrades.size() > 0:
-		send_cards()
+		send_cards_resource()
 
 func send_cards():
 	var dna_type = queued_upgrades.pop_front()
-	var cards = Globals.dna_types[dna_type]["cards"]
+	var cards = Globals.dna_types[dna_type]["cards"] 
 	var card_options = []
-	randomize()
+	# randomize()
 	card_options.push_back(cards.pick_random())
 	cards.erase(card_options[0])
 	card_options.push_back(cards.pick_random())
 	cards.erase(card_options[1])
 	card_options.push_back(cards.pick_random())
 	$"../Main/CanvasLayer/UI/DnaMenu".get_dna(card_options)
+
+func send_cards_resource():
+	var dna = queued_upgrades.pop_front()
+	var cardcount = dna.cards.size()
+	var indexes : Array[int] = []
+	while indexes.size() != 3:
+		var index = randi() % cardcount
+		if index in indexes:
+			pass
+		else:
+			indexes.push_back(index)
+	$"../Main/CanvasLayer/UI/DnaMenu".get_dna_resource(dna, indexes)
 
 func selected_card(card):
 	current_cards.push_back(card)

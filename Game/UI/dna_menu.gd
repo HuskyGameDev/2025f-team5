@@ -4,8 +4,12 @@ var closed : bool = false
 var notif: bool = false
 
 var current_cards = []
+var current_dna: BaseDna
+var current_dna_indexes = []
+
 var card_options = []
 var queued_upgrades = []
+
 
 @onready var mutations_container := $Movingparts/DnaPanel/MarginContainer/Mutations
 @onready var mutations_options := $Movingparts/DnaPanel/MarginContainer/MutationOptions
@@ -68,7 +72,6 @@ func toggle_notify():
 		if !closed: menu_hide()
 
 func get_dna(cards):
-	# some barebones UI stuff is here now, definitely needs rework as I'm sure the massive links show
 	toggle_notify()
 	option_one_name.text = cards[0]["name"]
 	option_one_type.text = cards[0]["effect_type"]
@@ -80,6 +83,20 @@ func get_dna(cards):
 	option_three_type.text = cards[2]["effect_type"]
 	option_three_desc.text = cards[2]["description"]
 	card_options = cards
+
+func get_dna_resource(dna, indexes: Array[int]):
+	toggle_notify()
+	option_one_name.text = dna.cards[indexes[0]].cardname
+	option_one_type.text = Globals.name_from_type[dna.cards[indexes[0]].effect_type]
+	option_one_desc.text = dna.cards[indexes[0]].description
+	option_two_name.text = dna.cards[indexes[1]].cardname
+	option_two_type.text = Globals.name_from_type[dna.cards[indexes[0]].effect_type]
+	option_two_desc.text = dna.cards[indexes[1]].description
+	option_three_name.text = dna.cards[indexes[2]].cardname
+	option_three_type.text = Globals.name_from_type[dna.cards[indexes[0]].effect_type]
+	option_three_desc.text = dna.cards[indexes[2]].description
+	current_dna = dna
+	current_dna_indexes = indexes
 
 func enqueue_dna(cards_queue):
 	queued_upgrades.push_back(cards_queue)
