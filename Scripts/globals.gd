@@ -1,6 +1,14 @@
 extends Node
 # Create globals for bullet body and sprite
 
+enum Types {Movement, Shooting, Special}
+
+var name_from_type = {
+	Types.Movement: "Movement",
+	Types.Shooting: "Shooting",
+	Types.Special: "Special"
+}
+
 var player_base = {
 	"health" = 5,
 	"speed" = 200,

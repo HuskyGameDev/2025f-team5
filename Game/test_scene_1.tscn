@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://l274038u5man"]
+[gd_scene load_steps=4 format=3 uid="uid://l274038u5man"]
 
 [ext_resource type="Script" uid="uid://dqdt0hmmfuqfr" path="res://Game/test_scene_1.gd" id="1_ouv0h"]
+[ext_resource type="Resource" uid="uid://70weo23wdh3w" path="res://Resource/Dna/mini.tres" id="2_huvir"]
+[ext_resource type="PackedScene" uid="uid://bvci6mdchm5bw" path="res://Game/Player/player.tscn" id="3_ouv0h"]
 
 [node name="TestScene1" type="Node2D"]
 script = ExtResource("1_ouv0h")
+dna_type = ExtResource("2_huvir")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 475.0
@@ -13,3 +16,5 @@ offset_bottom = 343.0
 text = "SCENE 1
 
 PRESS SPACE TO CONTINUE"
+
+[node name="Player" parent="." instance=ExtResource("3_ouv0h")]

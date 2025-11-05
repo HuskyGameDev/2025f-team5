@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourceBullet" load_steps=4 format=3 uid="uid://b8ugowge3wjbf"]
+
+[ext_resource type="Script" uid="uid://3cmcdvl1m2xy" path="res://Resource/Bullet/resource_bullet.gd" id="1_7ifqw"]
+[ext_resource type="Shape2D" uid="uid://hiha5kdjmlnc" path="res://Resource/Bullet/CollisionShape2D/mini_bullet.tres" id="1_dywub"]
+[ext_resource type="Texture2D" uid="uid://3h4pdnab6jjk" path="res://Resource/Bullet/Sprite2D/mini_bullet.tres" id="2_vfh04"]
+
+[resource]
+script = ExtResource("1_7ifqw")
+bullet_sprite = ExtResource("2_vfh04")
+bullet_hitbox = ExtResource("1_dywub")
+metadata/_custom_type_script = "uid://3cmcdvl1m2xy"

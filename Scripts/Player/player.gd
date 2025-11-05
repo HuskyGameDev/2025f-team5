@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var damage : float = Globals.player_base["damage"]
 @onready var firerate : float = Globals.player_base["firerate"]
 var reversed = false		# orientation, false = normal, true = reversed
-var bullet_type: String = "default"
+@export var bullet_type: ResourceBullet
 
 var can_move : bool = true
 var can_dash : bool = true
@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 		reversed = true  
 	
 	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
-		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, Globals.bullet_types[bullet_type]["sprite"], Globals.bullet_types[bullet_type]["collision_body"])
+		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, bullet_type)
 		get_parent().add_child(shot)
 		shot.global_position = self.get_node("PlayerGun/BulletExitPoint").global_position
 		shot.fire()

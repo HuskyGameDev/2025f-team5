@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = Bullet.new_bullet(shot_speed, Vector2(0,0), bullet_lifetime, damage, false, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
+	var bullet_instance = Bullet.new_bullet(shot_speed, Vector2(0,0), bullet_lifetime, damage, false, bullet_resource)
 	get_parent().add_child(bullet_instance)
 	bullet_instance.position = position
 	bullet_instance.fire()
