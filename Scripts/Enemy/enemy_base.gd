@@ -3,6 +3,8 @@ class_name EnemyBase extends CharacterBody2D
 const enemy_scene: PackedScene = preload("res://Game/Enemy/enemy_base.tscn")
 
 @export var bullet_resource: ResourceBullet
+@export var dna_type: ResourceDna
+@export var dna_drop_amount: int
 
 var health : float			# Damage enemy can take before despawning
 var speed : int				# Movement speed
@@ -45,6 +47,8 @@ func _ready() -> void:
 	set_cooldown(firerate)
 	
 func death() -> void:
+	DnaHandler.gain_dna(dna_type, dna_drop_amount)
+	DnaHandler.pop_queue()
 	queue_free()
 
 func hit(damage_dealt: float) -> void:

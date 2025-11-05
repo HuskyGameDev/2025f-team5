@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://5mykmx5t2tno"]
+[gd_scene load_steps=35 format=3 uid="uid://5mykmx5t2tno"]
 
 [ext_resource type="Script" uid="uid://dw86l3l8g43rf" path="res://Scripts/Enemy/unibot.gd" id="1_0f4kc"]
 [ext_resource type="Resource" uid="uid://m18n3l01o34o" path="res://Resource/Bullet/Bullets/default.tres" id="2_gkgni"]
 [ext_resource type="Texture2D" uid="uid://dmrmswciwj6pk" path="res://Art/Enemy/UnibotSpriteSheet.png" id="2_q31vi"]
+[ext_resource type="Resource" uid="uid://70weo23wdh3w" path="res://Resource/Dna/mini.tres" id="3_2rxew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q31vi"]
 height = 28.0
@@ -240,6 +241,8 @@ animations = [{
 motion_mode = 1
 script = ExtResource("1_0f4kc")
 bullet_resource = ExtResource("2_gkgni")
+dna_type = ExtResource("3_2rxew")
+dna_drop_amount = 20
 metadata/_custom_type_script = "uid://bli4u25j6g8fr"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
