@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="BaseDna" load_steps=7 format=3 uid="uid://70weo23wdh3w"]
+[gd_resource type="Resource" script_class="ResourceDna" load_steps=7 format=3 uid="uid://70weo23wdh3w"]
 
 [ext_resource type="Script" uid="uid://7y0qn5u1hpb8" path="res://Scripts/Player/dna_card.gd" id="1_uwil1"]
-[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/base_dna.gd" id="2_i1yho"]
+[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/resource_dna.gd" id="3_i1yho"]
 [ext_resource type="Resource" uid="uid://b8ugowge3wjbf" path="res://Resource/Bullet/Bullets/mini.tres" id="4_u78q5"]
 
 [sub_resource type="Resource" id="Resource_uwil1"]
@@ -36,7 +36,7 @@ negatives = Array[String](["N/a"])
 metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
 
 [resource]
-script = ExtResource("2_i1yho")
+script = ExtResource("3_i1yho")
 dna_name = "mini"
 dna_threshold = 20
 cards = Array[ExtResource("1_uwil1")]([SubResource("Resource_uwil1"), SubResource("Resource_i1yho"), SubResource("Resource_mdgkx")])

@@ -1,5 +1,5 @@
 extends Resource
-class_name BaseDna
+class_name ResourceDna
 
 @export var dna_name: String
 @export var dna_threshold: int

@@ -37,7 +37,7 @@ func _on_attacking_timeout() -> void:
 		var bullet_direction : Vector2 
 		bullet_direction.x = abs(velocity.y)
 		bullet_direction.y = abs(velocity.x)
-		var bullet_instance = Bullet.new_bullet(shot_speed, bullet_direction, bullet_lifetime, damage, false, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
+		var bullet_instance = Bullet.new_bullet(shot_speed, bullet_direction, bullet_lifetime, damage, false, bullet_resource)
 		get_parent().add_child(bullet_instance)
 		bullet_instance.position = position
 		bullet_instance.fire()

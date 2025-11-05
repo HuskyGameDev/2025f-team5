@@ -2,6 +2,8 @@ class_name EnemyBase extends CharacterBody2D
 	#Used to load enemy instances
 const enemy_scene: PackedScene = preload("res://Game/Enemy/enemy_base.tscn")
 
+@export var bullet_resource: ResourceBullet
+
 var health : float			# Damage enemy can take before despawning
 var speed : int				# Movement speed
 var shot_speed : int			# Speed of shots
@@ -11,7 +13,7 @@ var damage : float			# Damage bullets do
 
 	# Insantiates and fires a bullet at the player whenever its attack cooldown expires
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = Bullet.new_bullet(speed, Vector2.LEFT, bullet_lifetime, damage, false, Globals.bullet_types["default"]["sprite"], Globals.bullet_types["default"]["collision_body"])
+	var bullet_instance = Bullet.new_bullet(speed, Vector2.LEFT, bullet_lifetime, damage, false, bullet_resource)
 	get_parent().add_child(bullet_instance)
 	bullet_instance.position = position
 	bullet_instance.fire()

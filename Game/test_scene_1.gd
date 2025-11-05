@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var dna_type: BaseDna
+@export var dna_type: ResourceDna
 
 func _ready():
 	print(Globals.Types.Movement)
@@ -8,7 +8,7 @@ func _ready():
 
 func byeah():
 	print(dna_type)
-	DnaHandler.gain_dna_resource(dna_type, 20)
+	DnaHandler.gain_dna(dna_type, 20)
 	DnaHandler.pop_queue()
 	#DnaHandler.gain_dna("mini", 20)
 	#DnaHandler.pop_queue()

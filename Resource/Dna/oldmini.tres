@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://m18n3l01o34o" path="res://Resource/Bullet/Bullets/default.tres" id="2_ip7sy"]
 [ext_resource type="Texture2D" uid="uid://3h4pdnab6jjk" path="res://Resource/Bullet/Sprite2D/mini_bullet.tres" id="3_hm5kl"]
 [ext_resource type="Resource" uid="uid://b8ugowge3wjbf" path="res://Resource/Bullet/Bullets/mini.tres" id="4_xh2yh"]
-[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/base_dna.gd" id="5_5a5aw"]
+[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/resource_dna.gd" id="5_5a5aw"]
 
 [sub_resource type="Resource" id="Resource_uwil1"]
 script = ExtResource("1_ib2ya")
