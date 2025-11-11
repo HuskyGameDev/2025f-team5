@@ -10,6 +10,7 @@ var current_dna_indexes = []
 var card_options = []
 var queued_upgrades = []
 
+var mutation_quantity: int = 1
 
 @onready var mutations_container := $Movingparts/DnaPanel/MarginContainer/Mutations
 @onready var mutations_options := $Movingparts/DnaPanel/MarginContainer/MutationOptions
@@ -33,13 +34,26 @@ var queued_upgrades = []
 @onready var card_one_type := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer/DnaType
 @onready var card_one_desc := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Movement/MarginContainer/VBoxContainer/DnaDesc
 
+@onready var card_two_name := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer/CardName
+@onready var card_two_type := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer/DnaType
+@onready var card_two_desc := $Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Bullet/MarginContainer/VBoxContainer/DnaDesc
+
+@onready var card_three_name := $"Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer/CardName"
+@onready var card_three_type := $"Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer/DnaType"
+@onready var card_three_desc := $"Movingparts/DnaPanel/MarginContainer/Mutations/Categories/Fire Path/MarginContainer/VBoxContainer/DnaDesc"
+
+
+
 func _input (event):
 	if event.is_action_pressed("DNA"):
-		if closed:
-			menu_show()
-		else:
-			menu_hide()
+		menu_toggle()
 	pass
+
+func menu_toggle ():
+	if closed:
+		menu_show()
+	else:
+		menu_hide()
 
 func _ready():
 	menu_hide()
@@ -59,6 +73,7 @@ func menu_show():
 func toggle_notify():
 	if !notif:
 		$Movingparts/DnaTab/alert.show()
+		$Movingparts/DnaTab/n_key.show()
 		notif = true
 		if hidden: show()
 		mutations_container.hide()
@@ -66,6 +81,7 @@ func toggle_notify():
 		if closed: menu_hide()
 	else:
 		$Movingparts/DnaTab/alert.hide()
+		$Movingparts/DnaTab/n_key.hide()
 		notif = false
 		mutations_container.show()
 		mutations_options.hide()
@@ -122,6 +138,19 @@ func _select_option_three():
 	#card_one_desc.text = card["description"]
 
 func add_card(index):
-	card_one_name.text = current_dna.cards[index].cardname
-	card_one_type.text = Globals.name_from_type[current_dna.cards[index].effect_type]
-	card_one_desc.text = current_dna.cards[index].description
+	match mutation_quantity:
+		1:
+			card_one_name.text = current_dna.cards[index].cardname
+			card_one_type.text = Globals.name_from_type[current_dna.cards[index].effect_type]
+			card_one_desc.text = current_dna.cards[index].description
+		2:
+			card_two_name.text = current_dna.cards[index].cardname
+			card_two_type.text = Globals.name_from_type[current_dna.cards[index].effect_type]
+			card_two_desc.text = current_dna.cards[index].description
+		3:
+			card_three_name.text = current_dna.cards[index].cardname
+			card_three_type.text = Globals.name_from_type[current_dna.cards[index].effect_type]
+			card_three_desc.text = current_dna.cards[index].description
+		_:
+			pass
+	mutation_quantity = mutation_quantity + 1
