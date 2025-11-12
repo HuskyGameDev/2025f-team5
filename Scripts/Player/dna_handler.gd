@@ -24,7 +24,7 @@ func gain_dna(dna: ResourceDna, quantity: int):
 	var dna_type = dna.dna_name
 	current_dna[dna_type] = current_dna.get(dna_type, 0) + quantity
 	var threshold = dna.dna_threshold
-	if current_dna[dna_type] >= threshold:
+	while current_dna[dna_type] >= threshold:
 		current_dna[dna_type] -= threshold
 		queued_upgrades.push_back(dna)
 
@@ -87,7 +87,8 @@ func selected_card(dna: ResourceDna, index):
 	#return updated_stats
 
 func calculate_changes():
-	var updated_stats = Globals.player_base
+	# duplicate(true) creates a deep copy of the dictionary
+	var updated_stats = Globals.player_base.duplicate(true)
 	updated_stats["bullet"] = null
 	for card in current_cards:
 		updated_stats["health"] += card.health

@@ -120,16 +120,16 @@ func get_dna(dna, indexes: Array[int]):
 		#get_dna()
 
 func _select_option_one():
-	DnaHandler.selected_card(current_dna, current_dna_indexes[0])
 	add_card(current_dna_indexes[0])
+	DnaHandler.selected_card(current_dna, current_dna_indexes[0])
 	toggle_notify()
 func _select_option_two():
-	DnaHandler.selected_card(current_dna, current_dna_indexes[1])
 	add_card(current_dna_indexes[1])
+	DnaHandler.selected_card(current_dna, current_dna_indexes[1])
 	toggle_notify()
 func _select_option_three():
-	DnaHandler.selected_card(current_dna, current_dna_indexes[2])
 	add_card(current_dna_indexes[2])
+	DnaHandler.selected_card(current_dna, current_dna_indexes[2])
 	toggle_notify()
 
 #func add_card(card):
