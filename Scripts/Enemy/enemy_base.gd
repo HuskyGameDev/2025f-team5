@@ -48,7 +48,9 @@ func _ready() -> void:
 	
 func death() -> void:
 	DnaHandler.gain_dna(dna_type, dna_drop_amount)
-	DnaHandler.pop_queue()
+	Globals.enemies_alive -= 1
+	if Globals.enemies_alive == 0:
+		DnaHandler.pop_queue()
 	queue_free()
 
 func hit(damage_dealt: float) -> void:

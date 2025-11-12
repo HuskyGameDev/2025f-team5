@@ -1,6 +1,9 @@
 extends Node
 # Create globals for bullet body and sprite
 
+# temp val until rooms exist
+var enemies_alive: int = 2
+
 enum Types {Movement, Shooting, Special}
 
 var name_from_type = {
