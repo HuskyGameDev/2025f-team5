@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://dti72b4p2o8dl"]
 
 [ext_resource type="Script" uid="uid://drvifx6ufw2dr" path="res://Scripts/Enemy/enemy_slime.gd" id="1_1dthq"]
-[ext_resource type="Resource" uid="uid://m18n3l01o34o" path="res://Resource/Bullet/Bullets/default.tres" id="2_b8lbi"]
+[ext_resource type="Resource" uid="uid://pwavh4fw52po" path="res://Resource/Bullet/Bullets/slime_goop.tres" id="2_5wiae"]
 [ext_resource type="Texture2D" uid="uid://mmjhppk2dyjk" path="res://Art/Enemy/slimeupdated.png" id="2_nal8d"]
-[ext_resource type="Resource" uid="uid://70weo23wdh3w" path="res://Resource/Dna/mini.tres" id="3_5wiae"]
+[ext_resource type="Resource" uid="uid://cwr2rg2qp2tim" path="res://Resource/Dna/slime.tres" id="3_5wiae"]
 
 [node name="EnemySlime" type="CharacterBody2D"]
 motion_mode = 1
 safe_margin = 1.0
 script = ExtResource("1_1dthq")
-bullet_resource = ExtResource("2_b8lbi")
+bullet_resource = ExtResource("2_5wiae")
 dna_type = ExtResource("3_5wiae")
 dna_drop_amount = 40
 
