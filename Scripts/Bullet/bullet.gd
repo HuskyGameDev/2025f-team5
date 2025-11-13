@@ -12,6 +12,7 @@ func _ready() -> void:
 	pass
 
 
+## Add " + (sin(10 * $Lifetime.get_time_left()))" after 'rotation' to create a sin wave pattern
 func _process(delta: float) -> void:
 	position += Vector2.RIGHT.rotated(rotation) * speed * delta
 
