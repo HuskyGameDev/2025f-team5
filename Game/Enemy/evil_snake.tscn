@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmj7mx6o3ci04"]
+[gd_scene load_steps=5 format=3 uid="uid://cmj7mx6o3ci04"]
 
 [ext_resource type="Script" uid="uid://dng5k6rpfuk56" path="res://Scripts/Enemy/evil_snake.gd" id="1_mh172"]
 [ext_resource type="Texture2D" uid="uid://diyldsqd5ebxi" path="res://Art/Enemy/EvilSnake.png" id="2_j50i5"]
+[ext_resource type="Resource" uid="uid://m18n3l01o34o" path="res://Resource/Bullet/Bullets/default.tres" id="2_tru0p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tru0p"]
 size = Vector2(24, 24)
@@ -11,6 +12,7 @@ collision_layer = 8
 collision_mask = 63
 motion_mode = 1
 script = ExtResource("1_mh172")
+bullet_resource = ExtResource("2_tru0p")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tru0p")
