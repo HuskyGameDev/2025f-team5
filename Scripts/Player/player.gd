@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var max_health: int = Globals.player_base["health"]
 @onready var health : int =  Globals.player_base["health"]
 @onready var speed : int = Globals.player_base["speed"]
 @onready var shot_speed : int = Globals.player_base["shot_speed"]
@@ -76,6 +77,7 @@ func dash_reset():
 func hit():
 	if(!is_dashing):
 		health -= 1
+		$/root/Main/CanvasLayer/UI/HealthBar.update_health(health)
 	
 	# when player dies, change to the dead sprite
 	if health == 0:
@@ -102,11 +104,23 @@ func reset_stats():
 	firerate = Globals.player_base["firerate"]
 
 func update_stats(update):
-	health = update["health"] if update["health"] > Globals.player_base["health"] else Globals.player_base["health"]
-	speed = update["speed"] if update["speed"] > Globals.player_base["speed"] else Globals.player_base["speed"]
-	shot_speed = update["shot_speed"] if update["shot_speed"] > Globals.player_base["shot_speed"] else Globals.player_base["shot_speed"]
-	bullet_lifetime = update["bullet_lifetime"] if update["bullet_lifetime"] > Globals.player_base["bullet_lifetime"] else Globals.player_base["bullet_lifetime"]
-	damage = update["damage"] if update["damage"] > Globals.player_base["damage"] else Globals.player_base["damage"]
-	firerate = update["firerate"] if update["firerate"] > Globals.player_base["firerate"] else Globals.player_base["firerate"]
+	update_health(update["health"])
+	speed = update["speed"] if update["speed"] > Globals.player_min["speed"] else Globals.player_min["speed"]
+	shot_speed = update["shot_speed"] if update["shot_speed"] > Globals.player_min["shot_speed"] else Globals.player_min["shot_speed"]
+	bullet_lifetime = update["bullet_lifetime"] if update["bullet_lifetime"] > Globals.player_min["bullet_lifetime"] else Globals.player_min["bullet_lifetime"]
+	damage = update["damage"] if update["damage"] > Globals.player_min["damage"] else Globals.player_min["damage"]
+	firerate = update["firerate"] if update["firerate"] > Globals.player_min["firerate"] else Globals.player_min["firerate"]
 	if update["bullet"] != null:
 		bullet_type = update["bullet"]
+
+func update_health(new_max: int):
+	var old_max : int = max_health
+	max_health = new_max if new_max > Globals.player_min["health"] else Globals.player_min["health"]
+	
+	if max_health > old_max: 
+		var difference : int = max_health - old_max
+		health = max_health if (health == old_max) else health + difference
+	elif max_health < old_max:
+		health = max_health if (health >= max_health) else health
+	
+	$/root/Main/CanvasLayer/UI/HealthBar.update_health(health)

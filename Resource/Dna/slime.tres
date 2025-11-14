@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ResourceDna" load_steps=9 format=3 uid="uid://cwr2rg2qp2tim"]
+
+[ext_resource type="Script" uid="uid://7y0qn5u1hpb8" path="res://Scripts/Player/dna_card.gd" id="1_jj0ly"]
+[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/resource_dna.gd" id="2_whu4s"]
+[ext_resource type="Resource" uid="uid://pwavh4fw52po" path="res://Resource/Bullet/Bullets/slime_goop.tres" id="2_x7n1g"]
+[ext_resource type="Texture2D" uid="uid://cbcseevb0vx2i" path="res://Art/Bullet/slime_goop.png" id="3_27nk6"]
+[ext_resource type="Texture2D" uid="uid://d486trbd55eg" path="res://Art/UiIcons/DNAICON.png" id="4_s82wb"]
+
+[sub_resource type="Resource" id="Resource_mekmc"]
+script = ExtResource("1_jj0ly")
+cardname = "Snail Trail"
+effect_type = 1
+description = "Your bullets hit hard but they don't move"
+positives = Array[String](["+ Massive damage increase", "+ Bullets last longer"])
+negatives = Array[String](["- Bullet speed = 0"])
+sprite = ExtResource("3_27nk6")
+shot_speed = -200
+bullet_lifetime = 2.0
+damage = 20.0
+bullet = ExtResource("2_x7n1g")
+metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
+
+[sub_resource type="Resource" id="Resource_46bhr"]
+script = ExtResource("1_jj0ly")
+cardname = "Slow & Steady"
+description = "You move far slower but have more hp"
+positives = Array[String](["+ large HP increase"])
+negatives = Array[String](["- Large speed decrease"])
+sprite = ExtResource("4_s82wb")
+health = 10
+speed = -100
+metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
+
+[sub_resource type="Resource" id="Resource_x1m08"]
+script = ExtResource("1_jj0ly")
+cardname = "Here to stay"
+effect_type = 1
+description = "Your bullets stick around longer"
+positives = Array[String](["+ bullet lifetime"])
+sprite = ExtResource("4_s82wb")
+bullet_lifetime = 1.0
+metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
+
+[resource]
+script = ExtResource("2_whu4s")
+dna_name = "Slime"
+dna_threshold = 10
+cards = Array[ExtResource("1_jj0ly")]([SubResource("Resource_mekmc"), SubResource("Resource_46bhr"), SubResource("Resource_x1m08")])
+metadata/_custom_type_script = "uid://baf8faixh8jue"
