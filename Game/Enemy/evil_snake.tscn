@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmj7mx6o3ci04"]
+
+[ext_resource type="Script" uid="uid://dng5k6rpfuk56" path="res://Scripts/Enemy/evil_snake.gd" id="1_mh172"]
+[ext_resource type="Texture2D" uid="uid://diyldsqd5ebxi" path="res://Art/Enemy/EvilSnake.png" id="2_j50i5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tru0p"]
+size = Vector2(24, 24)
+
+[node name="evil_snake" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 63
+motion_mode = 1
+script = ExtResource("1_mh172")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tru0p")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_j50i5")
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_attack_cooldown_timeout"]
