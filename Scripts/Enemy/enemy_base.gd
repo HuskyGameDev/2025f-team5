@@ -56,3 +56,4 @@ func hit(damage_dealt: float) -> void:
 	health -= damage_dealt
 	if (health <= 0):
 		death()
+	
