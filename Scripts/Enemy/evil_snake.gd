@@ -1,8 +1,11 @@
 class_name EvilSnake extends EnemyBase
 const enemy_snake_scene: PackedScene = preload("res://Game/Enemy/evil_snake.tscn")
 
+var attacking : bool
+var bullet_direction : int = 1 # determines whether the bullet moves to the left or right first
+
 @warning_ignore("shadowed_variable_base_class", "shadowed_variable")
-static func new_enemy(_sprite: Sprite2D = null, health: float = 6.0, speed: int = 20, firerate: float = 0.5, damage: float = 1.0, shot_speed: int = 200, bullet_lifetime: float = 2.0) -> CharacterBody2D:
+static func new_enemy(_sprite: Sprite2D = null, health: float = 6.0, speed: int = 10, firerate: float = 2, damage: float = 1.0, shot_speed: int = 120, bullet_lifetime: float = 2.0) -> CharacterBody2D:
 	var enemy_instance = enemy_snake_scene.instantiate()
 	enemy_instance.health = health
 	enemy_instance.speed = speed
@@ -23,19 +26,25 @@ func find_player() -> Vector2:
 		return Vector2(0,0)
 
 func _physics_process(delta: float) -> void:
-	var player_direction = find_player() - global_position
-	velocity = player_direction * speed * delta
-	move_and_slide()
+	if(attacking):
+		var player_direction = find_player() - global_position
+		velocity = player_direction * speed * delta
+		move_and_slide()
 
 	# Insantiates and fires a bullet at the player whenever its attack cooldown expires
 func _on_attack_cooldown_timeout() -> void:
-	var bullet_instance = Bullet.new_bullet(speed, Vector2.LEFT, bullet_lifetime, damage, false, bullet_resource)
+	$Cooldown.set_paused(true)
+	$Attacking.start()
+	
+	get_tree().create_timer(2.5).timeout.connect(attack_over)
+	
+	var bullet_instance = Bullet.new_bullet(shot_speed, Vector2.LEFT, bullet_lifetime, damage, false, bullet_resource)
 	get_parent().add_child(bullet_instance)
 	bullet_instance.position = position
 	bullet_instance.fire()
 	
-func set_cooldown(time: float) -> void:
-	$Cooldown.wait_time = time
+func attack_over() -> void:
+	$Cooldown.start()
+	$Attacking.pause()
 	
-func _ready() -> void:
-	set_cooldown(firerate)
+	attacking = true;
