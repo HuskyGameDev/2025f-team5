@@ -77,7 +77,7 @@ func dash_reset():
 func hit():
 	if(!is_dashing):
 		health -= 1
-		$/root/Main/CanvasLayer/UI/HealthBar.update_health(health)
+#		$/root/Main/CanvasLayer/UI/HealthBar.update_health(health)
 	
 	# when player dies, change to the dead sprite
 	if health == 0:
@@ -123,4 +123,4 @@ func update_health(new_max: int):
 	elif max_health < old_max:
 		health = max_health if (health >= max_health) else health
 	
-	$/root/Main/CanvasLayer/UI/HealthBar.update_health(health)
+#	$/root/Main/CanvasLayer/UI/HealthBar.update_health(health)
