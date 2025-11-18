@@ -143,6 +143,11 @@ func add_card(index):
 			card_one_name.text = current_dna.cards[index].cardname
 			card_one_type.text = Globals.name_from_type[current_dna.cards[index].effect_type]
 			card_one_desc.text = current_dna.cards[index].description
+			var testcard = load("res://Game/Player/card_base.tscn")
+			testcard = testcard.instantiate()
+			testcard.position = Vector2(476,56)
+			testcard.set_card_info(current_dna.cards[index])
+			add_child(testcard)
 		2:
 			card_two_name.text = current_dna.cards[index].cardname
 			card_two_type.text = Globals.name_from_type[current_dna.cards[index].effect_type]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://nyh6g75i82ys"]
+
+[ext_resource type="Texture2D" uid="uid://btcc7q0w338e4" path="res://Art/UiIcons/placeholder.png" id="1_2uhfa"]
+[ext_resource type="Script" uid="uid://duhfheekwcl5t" path="res://Scripts/Player/card_base.gd" id="1_3mrwb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mrwb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_4ooqi"]
+Panel/styles/panel = SubResource("StyleBoxFlat_3mrwb")
+
+[node name="CardBase" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3mrwb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 200.0
+theme = SubResource("Theme_4ooqi")
+
+[node name="CardFront" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 142.0
+offset_bottom = 198.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CardFront"]
+layout_mode = 2
+alignment = 1
+
+[node name="CardName" type="Label" parent="Panel/CardFront/VBoxContainer"]
+layout_mode = 2
+text = "<Card Name>"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CardDescription" type="Label" parent="Panel/CardFront/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "<Card Desc>"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CardFront/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_2uhfa")
+expand_mode = 5
+
+[node name="CardBack" type="MarginContainer" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 142.0
+offset_bottom = 198.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CardBack"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="Panel/CardBack/VBoxContainer"]
+layout_mode = 2
+text = "<Card Name>"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CardPositives" type="Label" parent="Panel/CardBack/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "+ Positive"
+autowrap_mode = 3
+
+[node name="CardNegatives" type="Label" parent="Panel/CardBack/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- Negative"
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]
