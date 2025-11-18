@@ -16,10 +16,12 @@ func spawn_enemies() -> void:
 		print("balls");
 		
 func choose_enemy_class() -> EnemyBase:
-	match randi() % 2:
+	match randi() % 3:
 		0:
 			return EnemySlime.new_enemy()
 		1:
 			return Unibot.new_enemy()
+		2:
+			return EvilSnake.new_enemy()
 		_:
 			return EnemyBase.new_enemy()
