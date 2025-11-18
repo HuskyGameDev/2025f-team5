@@ -25,3 +25,4 @@ autostart = true
 wait_time = 0.75
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Attacking" to="." method="_on_attacking_timeout"]
