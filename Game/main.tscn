@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b01f8ajn3cmwj"]
+[gd_scene load_steps=3 format=3 uid="uid://b01f8ajn3cmwj"]
 
 [ext_resource type="Script" uid="uid://c6m6mmta1ep86" path="res://Scripts/main.gd" id="1_xb63x"]
 [ext_resource type="PackedScene" uid="uid://s6ayeh6jrs1t" path="res://Game/UI/dna_menu.tscn" id="2_f5lw1"]
-[ext_resource type="PackedScene" uid="uid://c4mcm7tlk78gc" path="res://Game/UI/health_bar.tscn" id="3_gab3r"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xb63x")
@@ -17,6 +16,3 @@ offset_bottom = 40.0
 
 [node name="DnaMenu" parent="CanvasLayer/UI" instance=ExtResource("2_f5lw1")]
 layout_mode = 1
-
-[node name="HealthBar" parent="CanvasLayer/UI" instance=ExtResource("3_gab3r")]
-position = Vector2(41, 14)
