@@ -12,7 +12,6 @@ positives = Array[String](["Increases your walking speed by 50 units"])
 negatives = Array[String](["Decreases damage by 1"])
 speed = 50
 damage = -1.0
-bullet_path = "\"\""
 metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
 
 [sub_resource type="Resource" id="Resource_i1yho"]
@@ -25,7 +24,6 @@ negatives = Array[String](["Makes your bullets smaller", "Large damage decrease"
 damage = -5.0
 firerate = -0.4
 bullet = ExtResource("4_u78q5")
-bullet_path = "\"\""
 metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
 
 [sub_resource type="Resource" id="Resource_mdgkx"]
@@ -35,7 +33,6 @@ effect_type = 2
 description = "Nothing ever happens :("
 positives = Array[String](["N/a"])
 negatives = Array[String](["N/a"])
-bullet_path = "\"\""
 metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
 
 [resource]

@@ -71,7 +71,11 @@ func _process(_delta: float) -> void:
 			bullet_path_expression.parse(bullet_path, bullet_path_args)
 			var shot = Bullet.new_bullet_wavy(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, bullet_type, bullet_path_expression, [1])
 			get_parent().add_child(shot)
-			shot.global_position = self.get_node("PlayerGun/BuletExitPoint")
+			shot.global_position = self.get_node("PlayerGun/BulletExitPoint").global_position
+			shot.fire()
+			can_shoot = false
+			get_tree().create_timer(firerate).timeout.connect(shot_reset)
+
 
 
 # Called when a dash ends, allows the player to control movement again
@@ -122,6 +126,8 @@ func update_stats(update):
 	firerate = update["firerate"] if update["firerate"] > Globals.player_min["firerate"] else Globals.player_min["firerate"]
 	if update["bullet"] != null:
 		bullet_type = update["bullet"]
+	if update["bullet_path"] != "" :
+		bullet_path = update["bullet_path"]
 
 func update_health(new_max: int):
 	var old_max : int = max_health

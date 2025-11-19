@@ -16,7 +16,7 @@ extends Resource
 @export var bullet: ResourceBullet
 @export var bullet_path : String
 
-func _init(p_cardname = "", p_effect_type = Globals.Types.Movement, p_description = "", p_positives : Array[String] = [], p_negatives : Array[String] = [], p_sprite = null, p_health = 0, p_speed = 0, p_shot_speed = 0, p_bullet_lifetime = 0, p_damage = 0, p_firerate = 0,  p_bullet = null):
+func _init(p_cardname = "", p_effect_type = Globals.Types.Movement, p_description = "", p_positives : Array[String] = [], p_negatives : Array[String] = [], p_sprite = null, p_health = 0, p_speed = 0, p_shot_speed = 0, p_bullet_lifetime = 0, p_damage = 0, p_firerate = 0,  p_bullet = null, p_bullet_path = ""):
 	cardname = p_cardname
 	effect_type = p_effect_type
 	description = p_description
@@ -30,3 +30,4 @@ func _init(p_cardname = "", p_effect_type = Globals.Types.Movement, p_descriptio
 	damage = p_damage
 	firerate = p_firerate
 	bullet = p_bullet
+	bullet_path = p_bullet_path

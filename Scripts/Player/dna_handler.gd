@@ -90,6 +90,7 @@ func calculate_changes():
 	# duplicate(true) creates a deep copy of the dictionary
 	var updated_stats = Globals.player_base.duplicate(true)
 	updated_stats["bullet"] = null
+	updated_stats["bullet_path"] = ""
 	for card in current_cards:
 		updated_stats["health"] += card.health
 		updated_stats["speed"] += card.speed
@@ -98,4 +99,5 @@ func calculate_changes():
 		updated_stats["damage"] += card.damage
 		updated_stats["firerate"] += card.firerate
 		updated_stats["bullet"] = card.bullet if card.bullet != null else updated_stats["bullet"]
+		updated_stats["bullet_path"] = card.bullet_path if card.bullet_path != "" else updated_stats["bullet_path"]
 	return updated_stats
