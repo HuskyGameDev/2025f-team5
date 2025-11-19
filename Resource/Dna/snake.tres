@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceDna" load_steps=3 format=3 uid="uid://dgjrto3wlggr5"]
+
+[ext_resource type="Script" uid="uid://7y0qn5u1hpb8" path="res://Scripts/Player/dna_card.gd" id="1_5f464"]
+[ext_resource type="Script" uid="uid://baf8faixh8jue" path="res://Scripts/Player/resource_dna.gd" id="2_ni6db"]
+
+[resource]
+script = ExtResource("2_ni6db")
+dna_name = "Snake"
+dna_threshold = 20
+metadata/_custom_type_script = "uid://baf8faixh8jue"

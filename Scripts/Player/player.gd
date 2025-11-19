@@ -7,8 +7,11 @@ extends CharacterBody2D
 @onready var bullet_lifetime : float = Globals.player_base["bullet_lifetime"]
 @onready var damage : float = Globals.player_base["damage"]
 @onready var firerate : float = Globals.player_base["firerate"]
+@onready var bullet_path : String = ""
+@onready var bullet_path_args : Array[String]= []
 var reversed = false		# orientation, false = normal, true = reversed
 @export var bullet_type: ResourceBullet
+
 
 var can_move : bool = true
 var can_dash : bool = true
@@ -56,12 +59,19 @@ func _process(_delta: float) -> void:
 		reversed = true  
 	
 	if Input.is_action_pressed("PrimaryAction") && can_shoot && health > 0:
-		var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, bullet_type)
-		get_parent().add_child(shot)
-		shot.global_position = self.get_node("PlayerGun/BulletExitPoint").global_position
-		shot.fire()
-		can_shoot = false
-		get_tree().create_timer(firerate).timeout.connect(shot_reset)
+		if bullet_path == "":
+			var shot = Bullet.new_bullet(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, bullet_type)
+			get_parent().add_child(shot)
+			shot.global_position = self.get_node("PlayerGun/BulletExitPoint").global_position
+			shot.fire()
+			can_shoot = false
+			get_tree().create_timer(firerate).timeout.connect(shot_reset)
+		else:
+			var bullet_path_expression : Expression = Expression.new()
+			bullet_path_expression.parse(bullet_path, bullet_path_args)
+			var shot = Bullet.new_bullet_wavy(shot_speed, get_global_mouse_position(), bullet_lifetime, damage, true, bullet_type, bullet_path_expression, [1])
+			get_parent().add_child(shot)
+			shot.global_position = self.get_node("PlayerGun/BuletExitPoint")
 
 
 # Called when a dash ends, allows the player to control movement again
