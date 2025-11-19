@@ -11,7 +11,7 @@ safe_margin = 1.0
 script = ExtResource("1_1dthq")
 bullet_resource = ExtResource("2_5wiae")
 dna_type = ExtResource("3_5wiae")
-dna_drop_amount = 40
+dna_drop_amount = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(24, 24, -24, 24, -24, -16, -16, -24, 16, -24, 24, -16)
