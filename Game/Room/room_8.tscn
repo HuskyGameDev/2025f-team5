@@ -48,7 +48,7 @@ position = Vector2(80, 160)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(416, 288)
+position = Vector2(32, 32)
 polygon = PackedVector2Array(0, 0, 312, 0, 312, 32, 392, 32, 392, 0, 704, 0, 704, 184, 672, 184, 672, 264, 704, 264, 704, 448, 392, 448, 392, 416, 312, 416, 312, 448, 0, 448, 0, 264, 32, 264, 32, 184, 0, 184)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

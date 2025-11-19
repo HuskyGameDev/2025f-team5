@@ -11,8 +11,7 @@ tile_map_data = PackedByteArray("AAAXAAAAAQALAAAAAAAWAAAAAQAKAAAAAAAVAAAAAQAKAAA
 tile_set = ExtResource("1_1onc0")
 
 [node name="DownDoor" type="Marker2D" parent="."]
-position = Vector2(416, 504)
-metadata/_edit_lock_ = true
+position = Vector2(384, 512)
 
 [node name="EnemySpawnpoints" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
