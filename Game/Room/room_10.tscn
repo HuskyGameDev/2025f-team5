@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://ilyyd0qeqx1m"]
+[gd_scene load_steps=3 format=4 uid="uid://ilyyd0qeqx1m"]
 
 [ext_resource type="TileSet" uid="uid://bs13m7xh4l7ni" path="res://Resource/TileSet/default.tres" id="1_1onc0"]
 [ext_resource type="Script" uid="uid://cmp708y5yu43s" path="res://Scripts/Room/room_1.gd" id="1_4diyg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c2dn"]
-size = Vector2(576, 384)
 
 [node name="Room10" type="Node2D"]
 script = ExtResource("1_4diyg")
@@ -49,8 +46,8 @@ position = Vector2(384, 120)
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(384, 288)
-shape = SubResource("RectangleShape2D_6c2dn")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(0, 0, 312, 0, 312, 32, 392, 32, 392, 0, 704, 0, 704, 184, 672, 184, 672, 264, 704, 264, 704, 448, 392, 448, 392, 416, 312, 416, 312, 448, 0, 448, 0, 264, 32, 264, 32, 184, 0, 184)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
