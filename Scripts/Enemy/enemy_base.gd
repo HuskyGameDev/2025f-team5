@@ -6,6 +6,7 @@ const enemy_scene: PackedScene = preload("res://Game/Enemy/enemy_base.tscn")
 @export var dna_type: ResourceDna
 @export var dna_drop_amount: int
 
+signal on_death
 var health : float			# Damage enemy can take before despawning
 var speed : int				# Movement speed
 var shot_speed : int			# Speed of shots
@@ -47,6 +48,7 @@ func _ready() -> void:
 	set_cooldown(firerate)
 	
 func death() -> void:
+	emit_signal("on_death")
 	DnaHandler.gain_dna(dna_type, dna_drop_amount)
 	if $"/root/Main/CanvasLayer/UI/DnaMenu".notif == false:
 		DnaHandler.pop_queue()
