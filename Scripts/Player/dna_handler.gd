@@ -9,8 +9,9 @@ var current_cards = []
 #possibly in future make so that deletes keys?
 # - for showing dna thresholds to player, reduce bloat after respec?
 func reset_current_dna() -> void:
-	for dna_type in current_dna.keys():
-		current_dna[dna_type] = 0
+	for dna_type in current_cards:
+		current_cards.pop_back()
+	calculate_changes()
 
 
 #func gain_dna(dna_type: String, quantity: int):
