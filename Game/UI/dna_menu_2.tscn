@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpjsshenrweh5"]
+
+[ext_resource type="PackedScene" uid="uid://nyh6g75i82ys" path="res://Game/Player/card_base.tscn" id="1_jwswy"]
+
+[node name="DnaMenu2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Current" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.5
+offset_top = -125.0
+offset_right = 232.5
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Current"]
+layout_mode = 0
+offset_right = 465.5
+offset_bottom = 250.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Current/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Current/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DNA"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Current/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Current/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Current/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="CardBase" parent="Current/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_jwswy")]
+layout_mode = 2
+
+[node name="CardBase2" parent="Current/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_jwswy")]
+layout_mode = 2
+
+[node name="CardBase3" parent="Current/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_jwswy")]
+layout_mode = 2
