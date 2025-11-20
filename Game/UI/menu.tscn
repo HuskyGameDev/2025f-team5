@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1tmjr812tyeg"]
+[gd_scene load_steps=3 format=3 uid="uid://tld6j8uhuxjt"]
 
-[ext_resource type="Script" uid="uid://vjc4bjbaebvt" path="res://Game/UI/menu.gd" id="1_ykyyk"]
+[ext_resource type="Script" path="res://Game/UI/menu.gd" id="1_ykyyk"]
+[ext_resource type="Texture2D" uid="uid://c01ppbifho2oo" path="res://Art/UiIcons/aimalgam_title.png" id="2_m8tpa"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -29,10 +30,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer/TitleContainer"]
+[node name="Title" type="TextureRect" parent="HBoxContainer/VBoxContainer/TitleContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 52
-text = "Aimalgam"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_m8tpa")
+expand_mode = 1
 
 [node name="StartContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
