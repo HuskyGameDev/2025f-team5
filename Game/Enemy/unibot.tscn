@@ -242,7 +242,6 @@ motion_mode = 1
 script = ExtResource("1_0f4kc")
 bullet_resource = ExtResource("2_gkgni")
 dna_type = ExtResource("3_2rxew")
-dna_drop_amount = 20
 metadata/_custom_type_script = "uid://bli4u25j6g8fr"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
