@@ -23,7 +23,7 @@ var player_min = {
 	"shot_speed" = 0,
 	"bullet_lifetime" = 0.3,
 	"damage" = 1.0,
-	"firerate" = 0.5
+	"firerate" = 1.0
 }
 
 var bullet_types = {
