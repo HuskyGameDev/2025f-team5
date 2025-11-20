@@ -123,7 +123,7 @@ func update_stats(update):
 	shot_speed = update["shot_speed"] if update["shot_speed"] > Globals.player_min["shot_speed"] else Globals.player_min["shot_speed"]
 	bullet_lifetime = update["bullet_lifetime"] if update["bullet_lifetime"] > Globals.player_min["bullet_lifetime"] else Globals.player_min["bullet_lifetime"]
 	damage = update["damage"] if update["damage"] > Globals.player_min["damage"] else Globals.player_min["damage"]
-	firerate = update["firerate"] if update["firerate"] > Globals.player_min["firerate"] else Globals.player_min["firerate"]
+	firerate = update["firerate"] if update["firerate"] < Globals.player_min["firerate"] else Globals.player_min["firerate"]
 	if update["bullet"] != null:
 		bullet_type = update["bullet"]
 	if update["bullet_path"] != "" :

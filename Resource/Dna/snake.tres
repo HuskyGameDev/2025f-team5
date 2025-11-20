@@ -23,13 +23,14 @@ metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
 
 [sub_resource type="Resource" id="Resource_ky6ua"]
 script = ExtResource("1_5f464")
-cardname = "<ERROR>"
-description = "failed to load card"
+cardname = "Bullet Hose"
+description = "You shoot faster"
+firerate = -0.1
 metadata/_custom_type_script = "uid://7y0qn5u1hpb8"
 
 [resource]
 script = ExtResource("2_ni6db")
 dna_name = "Snake"
-dna_threshold = 1
+dna_threshold = 5
 cards = Array[ExtResource("1_5f464")]([SubResource("Resource_5f464"), SubResource("Resource_ni6db"), SubResource("Resource_ky6ua")])
 metadata/_custom_type_script = "uid://baf8faixh8jue"
